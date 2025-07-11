@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+@layer base {
+  html[data-theme="default-green"] {
+    /* base */
+    --color-primary-50: 253 244 246; /* colors.defaultPink.50 */
+    --color-primary-100: 247 222 228;
+    --color-primary-200: 244 206 215;
+    --color-primary-300: 238 183 197;
+    --color-primary-400: 235 169 186;
+    --color-primary-500: 230 148 169;
+    --color-primary-600: 209 135 154;
+    --color-primary-700: 163 105 120;
+    --color-primary-800: 127 81 93;
+    --color-primary-900: 97 62 71;
+    /* --color-primary: 230 148 169; */
+    --color-secondary: theme("colors.green.600");
+    /* nav */
+    --color-nav-background: theme("colors.white");
+    --color-nav-border: theme("colors.slate.100");
+    --color-nav-link-default: theme("colors.blue.950");
+    --color-nav-link-hover: theme(colors.defaultGreen.500);
+    /* nav banner */
+    --color-nav-banner-background: theme(colors.defaultGreen.50);
+    --color-nav-banner-border: theme(colors.defaultGreen.100);
+    --color-nav-banner-icon: theme(colors.defaultGreen.500);
+    --color-nav-banner-text: theme(colors.defaultGreen.600);
+    /* button */
+    /* button-primary */
+    --color-button-primary-background: theme(colors.defaultGreen.500);
+    --color-button-primary-border: theme(colors.defaultGreen.500);
+    --color-button-primary-icon: theme("colors.white");
+    --color-button-primary-text: theme("colors.blue.950");
+    --color-button-primary-hover-background: theme(colors.defaultGreen.600);
+    /* button-secondary */
+    --color-button-secondary-background: theme("colors.white");
+    --color-button-secondary-border: theme("colors.slate.200");
+    --color-button-secondary-icon: theme("colors.blue.950");
+    --color-button-secondary-text: theme("colors.blue.950");
+    --color-button-secondary-hover-background: theme("colors.white");
+    /* button-disabled */
+    --color-button-disabled-background: theme(colors.defaultGreen.300);
+    --color-button-disabled-border: theme(colors.defaultGreen.300);
+    --color-button-disabled-icon: theme(colors.defaultGreen.500);
+    --color-button-disabled-text: theme("colors.white");
+    --color-button-disabled-hover-background: theme(colors.defaultGreen.300);
+  }
+  html[data-theme="rose"] {
+    /* base */
+    --color-primary-50: 253 244 246; /* colors.defaultPink.50 */
+    --color-primary-100: 247 222 228;
+    --color-primary-200: 244 206 215;
+    --color-primary-300: 238 183 197;
+    --color-primary-400: 235 169 186;
+    --color-primary-500: 230 148 169;
+    --color-primary-600: 209 135 154;
+    --color-primary-700: 163 105 120;
+    --color-primary-800: 127 81 93;
+    --color-primary-900: 97 62 71;
+    /* --color-primary: 230 148 169; */
+    --color-secondary: theme("colors.green.600");
+    /* nav */
+    --color-nav-background: theme("colors.white");
+    --color-nav-border: theme("colors.slate.100");
+    --color-nav-link-default: theme("colors.blue.950");
+    --color-nav-link-hover: theme(colors.rose.500);
+    /* nav banner */
+    --color-nav-banner-background: theme(colors.rose.50);
+    --color-nav-banner-border: theme(colors.rose.100);
+    --color-nav-banner-icon: theme(colors.rose.500);
+    --color-nav-banner-text: theme(colors.rose.600);
+    /* button */
+    /* button-primary */
+    --color-button-primary-background: theme(colors.rose.500);
+    --color-button-primary-border: theme(colors.rose.500);
+    --color-button-primary-icon: theme("colors.white");
+    --color-button-primary-text: theme("colors.blue.950");
+    --color-button-primary-hover-background: theme(colors.rose.600);
+    /* button-secondary */
+    --color-button-secondary-background: theme("colors.white");
+    --color-button-secondary-border: theme("colors.slate.200");
+    --color-button-secondary-icon: theme("colors.blue.950");
+    --color-button-secondary-text: theme("colors.blue.950");
+    --color-button-secondary-hover-background: theme("colors.white");
+    /* button-disabled */
+    --color-button-disabled-background: theme(colors.rose.300);
+    --color-button-disabled-border: theme(colors.rose.300);
+    --color-button-disabled-icon: theme(colors.rose.500);
+    --color-button-disabled-text: theme("colors.white");
+    --color-button-disabled-hover-background: theme(colors.rose.300);
+  }
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
