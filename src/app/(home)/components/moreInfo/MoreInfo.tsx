@@ -8,7 +8,7 @@ import { sizeStyles, variantStyles } from "@/components/button/Button";
 
 const MoreInfo = () => {
   return (
-    <section id="more-info" className="w-full py-8 md:py-12 bg-rose-50">
+    <section id="more-info" className="w-full py-8 md:py-12 bg-primary-50">
       <Container className=" max-w-screen-md flex items-center justify-center flex-col">
         <PageHeading
           badgeText="Korzyści"
@@ -35,11 +35,11 @@ const MoreInfo = () => {
           spy={true}
           duration={400}
           className={twMerge(
-            ` ${variantStyles["primary"]} ${sizeStyles["xl"]} bg-red-500 text-white mt-4 max-w-xs flex items-center justify-center w-full lg:w-auto cursor-pointer transition ease-out  rounded-xl relative overflow-hidden`
+            ` ${variantStyles["primary"]} ${sizeStyles["xl"]} text-white mt-4 max-w-xs flex items-center justify-center w-full lg:w-auto cursor-pointer transition ease-out  rounded-xl relative overflow-hidden`
           )}
         >
           <span className="absolute top-0 left-[-200%] w-[300%] h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-40 rotate-22 animate-slide"></span>
-          Umów się na konsultację
+          Umów konsultację
         </Link>
       </Container>
     </section>

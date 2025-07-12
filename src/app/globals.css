@@ -35,7 +35,7 @@
     --color-nav-background: theme("colors.white");
     --color-nav-border: theme("colors.slate.100");
     --color-nav-link-default: theme("colors.blue.950");
-    --color-nav-link-hover: theme(colors.defaultGreen.500);
+    --color-nav-link-hover: theme("colors.defaultGreen.500");
     /* nav banner */
     --color-nav-banner-background: theme(colors.defaultGreen.50);
     --color-nav-banner-border: theme(colors.defaultGreen.100);
@@ -62,17 +62,43 @@
     --color-button-disabled-hover-background: theme(colors.defaultGreen.300);
   }
   html[data-theme="rose"] {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 346.8 77.2% 49.8%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 346.8 77.2% 49.8%;
+    --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+
     /* base */
-    --color-primary-50: 253 244 246; /* colors.defaultPink.50 */
-    --color-primary-100: 247 222 228;
-    --color-primary-200: 244 206 215;
-    --color-primary-300: 238 183 197;
-    --color-primary-400: 235 169 186;
-    --color-primary-500: 230 148 169;
-    --color-primary-600: 209 135 154;
-    --color-primary-700: 163 105 120;
-    --color-primary-800: 127 81 93;
-    --color-primary-900: 97 62 71;
+    --color-primary-50: 255 241 242; /* tailwind.colors.rose.50 */
+    --color-primary-100: 255 228 230;
+    --color-primary-200: 254 205 211;
+    --color-primary-300: 253 164 175;
+    --color-primary-400: 251 113 133;
+    --color-primary-500: 244 63 94;
+    --color-primary-600: 225 29 72;
+    --color-primary-700: 190 18 60;
+    --color-primary-800: 159 18 57;
+    --color-primary-900: 136 19 55;
     /* --color-primary: 230 148 169; */
     --color-secondary: theme("colors.green.600");
     /* nav */
@@ -90,7 +116,7 @@
     --color-button-primary-background: theme(colors.rose.500);
     --color-button-primary-border: theme(colors.rose.500);
     --color-button-primary-icon: theme("colors.white");
-    --color-button-primary-text: theme("colors.blue.950");
+    --color-button-primary-text: theme("colors.white");
     --color-button-primary-hover-background: theme(colors.rose.600);
     /* button-secondary */
     --color-button-secondary-background: theme("colors.white");
@@ -99,8 +125,8 @@
     --color-button-secondary-text: theme("colors.blue.950");
     --color-button-secondary-hover-background: theme("colors.white");
     /* button-disabled */
-    --color-button-disabled-background: theme(colors.rose.300);
-    --color-button-disabled-border: theme(colors.rose.300);
+    --color-button-disabled-background: theme(colors.rose.400);
+    --color-button-disabled-border: theme(colors.rose.400);
     --color-button-disabled-icon: theme(colors.rose.500);
     --color-button-disabled-text: theme("colors.white");
     --color-button-disabled-hover-background: theme(colors.rose.300);
