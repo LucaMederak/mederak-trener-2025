@@ -45,7 +45,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pl" data-theme="rose">
+    <html lang="pl" data-theme="blue">
+      {/* rose, lime, yellow, blue, indigo */}
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GTM_ID as string} />
       <body className={twMerge(` bg-defaultWhite`, raleway.className)}>
         <AlertProvider>

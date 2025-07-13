@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React, { ReactNode } from "react";
 import Container from "../container/Container";
+import ThemeSwitcher from "../themeSwitcher/ThemeSwitcher";
 
 type IFooterLink = {
   name: string;
@@ -37,6 +38,7 @@ const Footer = ({ footerText, socialMedia, links }: IFooterProps) => {
               ))}
           </ul>
         )}
+        <ThemeSwitcher />
         {links && (
           <ul className="flex flex-col md:flex-row md:items-center md:justify-start gap-1.5 md:gap-4">
             {links.length > 0 &&
