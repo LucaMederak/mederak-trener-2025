@@ -41,7 +41,7 @@ const Cooperation = () => {
   return (
     <section
       id="cooperation"
-      className="w-full py-8 md:py-12 bg-white border-t border-rose-100"
+      className="w-full py-8 md:py-12 bg-white border-t border-primary-100"
     >
       <Container className="flex items-center justify-start flex-col">
         <PageHeading

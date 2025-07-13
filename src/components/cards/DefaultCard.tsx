@@ -26,7 +26,7 @@ const DefaultCard = ({
       whileInView="show"
       viewport={{ once: true }}
       className={twMerge(
-        `flex items-start justify-start flex-col gap-4 p-7 bg-rose-50 border border-rose-100 bg-opacity-80 rounded-xl ${className}`
+        `flex items-start justify-start flex-col gap-4 p-7 bg-primary-50 border border-primary-100 bg-opacity-80 rounded-xl ${className}`
       )}
     >
       <div
@@ -35,7 +35,7 @@ const DefaultCard = ({
         )}
       >
         {icon && (
-          <span className="flex items-center justify-center p-2 rounded-lg  bg-white [&>svg]:w-6 [&>svg]:h-6 text-rose-800">
+          <span className="flex items-center justify-center p-2 rounded-lg  bg-white [&>svg]:w-6 [&>svg]:h-6 text-primary-800">
             {icon}
           </span>
         )}
