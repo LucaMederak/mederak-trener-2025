@@ -48,7 +48,7 @@ export default function RootLayout({
     <html lang="pl" data-theme="blue">
       {/* rose, lime, yellow, blue, indigo */}
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GTM_ID as string} />
-      <body className={twMerge(` bg-defaultWhite`, raleway.className)}>
+      <body className={twMerge(` bg-defaultWhite`, figtree.className)}>
         <AlertProvider>
           <AlertDisplay />
           <div id="modal-portal" />
