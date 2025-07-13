@@ -43,7 +43,7 @@ const Hero = ({ className, children }: IHeroProps) => {
               offset={-100}
               duration={400}
               className={twMerge(
-                `${variantStyles["secondary"]} ${sizeStyles["2xl"]} border-2 border-slate-200/80 flex items-center justify-center w-full lg:w-auto cursor-pointer transition ease-out relative overflow-hidden`
+                `${variantStyles["secondary"]} ${sizeStyles["xl"]} border-2 border-slate-200/80 flex items-center justify-center w-full lg:w-auto cursor-pointer transition ease-out relative overflow-hidden`
               )}
             >
               <span className="absolute top-0 left-[-200%] w-[300%] h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-40 rotate-22 animate-slide"></span>
@@ -56,7 +56,7 @@ const Hero = ({ className, children }: IHeroProps) => {
               // offset={-100}
               duration={400}
               className={twMerge(
-                ` ${variantStyles["primary"]} ${sizeStyles["2xl"]} text-white flex items-center justify-center w-full lg:w-auto cursor-pointer transition ease-out  rounded-xl relative overflow-hidden`
+                ` ${variantStyles["primary"]} ${sizeStyles["xl"]} text-white flex items-center justify-center w-full lg:w-auto cursor-pointer transition ease-out  rounded-xl relative overflow-hidden`
               )}
             >
               <span className="absolute top-0 left-[-200%] w-[300%] h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-40 rotate-22 animate-slide"></span>

@@ -14,17 +14,25 @@ import Course3 from "@/assets/courses/course3.png";
 import Course4 from "@/assets/courses/course4.png";
 import Course5 from "@/assets/courses/course5.png";
 import Course6 from "@/assets/courses/course6.png";
+import Course7 from "@/assets/courses/course7.png";
+import Course8 from "@/assets/courses/course8.jpg";
+import Course9 from "@/assets/courses/course9.png";
+import Course10 from "@/assets/courses/course10.png";
 
 //icons
 import { UnfoldVertical } from "lucide-react";
 
 const courses = [
-  { id: 15, src: Course6 },
-  { id: 16, src: Course5 },
-  { id: 17, src: Course4 },
-  { id: 22, src: Course3 },
-  { id: 23, src: Course2 },
-  { id: 24, src: Course1 },
+  { id: 7, src: Course7 },
+  { id: 1, src: Course1 },
+  { id: 6, src: Course6 },
+  { id: 5, src: Course5 },
+  { id: 4, src: Course4 },
+  { id: 8, src: Course8 },
+  { id: 3, src: Course3 },
+  { id: 2, src: Course2 },
+  { id: 10, src: Course10 },
+  { id: 9, src: Course9 },
 ];
 
 const Courses = () => {
