@@ -37,7 +37,7 @@ const Hero = ({ className, children }: IHeroProps) => {
           </p>
           <div className="flex flex-col items-center justify-center sm:flex-row gap-4">
             <Link
-              to={"benefits"}
+              to={"cooperation"}
               smooth={true}
               spy={true}
               offset={-100}
@@ -69,7 +69,7 @@ const Hero = ({ className, children }: IHeroProps) => {
           width={800}
           height={1600}
           alt="Łukasz Męderak"
-          className=" w-full xl:w-[700px]"
+          className="w-full xl:w-[700px]"
         />
       </Container>
     </section>

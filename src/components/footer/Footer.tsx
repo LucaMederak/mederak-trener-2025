@@ -38,7 +38,7 @@ const Footer = ({ footerText, socialMedia, links }: IFooterProps) => {
               ))}
           </ul>
         )}
-        <ThemeSwitcher />
+        {/* <ThemeSwitcher /> */}
         {links && (
           <ul className="flex flex-col md:flex-row md:items-center md:justify-start gap-1.5 md:gap-4">
             {links.length > 0 &&

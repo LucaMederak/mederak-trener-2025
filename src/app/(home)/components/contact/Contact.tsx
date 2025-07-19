@@ -130,13 +130,14 @@ const Contact = () => {
                       <FormControl>
                         <Checkbox
                           checked={field.value}
-                          onCheckedChange={(checked) =>
-                            field.onChange(checked === true)
-                          }
+                          onCheckedChange={(checked) => {
+                            field.onChange(checked === true);
+                            field.onBlur(); // triggeruj walidację
+                          }}
                         />
                       </FormControl>
                       <FormLabel className="text-sm font-normal">
-                        Zapoznałem się z polityką prywatności
+                        Zapoznałam/em się z polityką prywatności
                       </FormLabel>
                     </div>
                     <FormMessage />

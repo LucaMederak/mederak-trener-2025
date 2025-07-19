@@ -40,7 +40,7 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
           <>
             {pathname === "/" ? (
               <Link
-                to={"pricing"}
+                to={"contact"}
                 smooth={true}
                 spy={true}
                 duration={400}
@@ -53,7 +53,7 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
               </Link>
             ) : (
               <NextLink
-                href={"/#pricing"}
+                href={"/#contact"}
                 className={twMerge(
                   `${variantStyles["primary"]} ${sizeStyles["xl"]} flex items-center justify-center w-full lg:w-auto cursor-pointer transition ease-out`
                 )}
