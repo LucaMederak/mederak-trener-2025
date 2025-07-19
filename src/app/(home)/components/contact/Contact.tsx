@@ -23,8 +23,10 @@ import { Button } from "@/components/ui/button";
 import LoadingSpinner from "@/components/loadingSpinner/LoadingSpinner";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
+import { useAlert } from "@/context/Alert.context";
 
 const Contact = () => {
+  const { handleAlert } = useAlert();
   const [isPending, startTransition] = useTransition();
   // 1. Define your form.
   const form = useForm<z.infer<typeof ContactSchema>>({
@@ -46,7 +48,10 @@ const Contact = () => {
     startTransition(() => {
       sendContactMessage(values).then((data) => {
         console.log(data);
-        // handleAlert(data.type, data.message);
+        handleAlert(data.type, data.message);
+        if (data.type === "success") {
+          form.reset();
+        }
       });
     });
   }

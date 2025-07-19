@@ -52,7 +52,6 @@ export default function RootLayout({
         <AlertProvider>
           <AlertDisplay />
           <div id="modal-portal" />
-
           {children}
         </AlertProvider>
       </body>
