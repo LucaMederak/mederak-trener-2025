@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import { fadeItem } from "@/animations/fade";
 
 //opinions
+import Course11 from "@/assets/courses/course11.jpg";
 import Course1 from "@/assets/courses/course1.png";
 import Course2 from "@/assets/courses/course2.png";
 import Course3 from "@/assets/courses/course3.png";
@@ -23,14 +24,15 @@ import Course10 from "@/assets/courses/course10.png";
 import { UnfoldVertical } from "lucide-react";
 
 const courses = [
+  { id: 11, src: Course11 },
   { id: 7, src: Course7 },
   { id: 1, src: Course1 },
+  { id: 2, src: Course2 },
   { id: 6, src: Course6 },
   { id: 5, src: Course5 },
   { id: 4, src: Course4 },
   { id: 8, src: Course8 },
   { id: 3, src: Course3 },
-  { id: 2, src: Course2 },
   { id: 10, src: Course10 },
   { id: 9, src: Course9 },
 ];
