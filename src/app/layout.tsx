@@ -38,6 +38,10 @@ export const metadata: Metadata = {
     locale: "pl",
     type: "website",
   },
+  other: {
+    "trustpilot-one-time-domain-verification-id":
+      "57c620d0-4ee3-4fc0-8b7a-04ea80631980",
+  },
 };
 
 export default function RootLayout({
