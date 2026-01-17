@@ -1,15 +1,15 @@
 "use client";
+
 import React, { ComponentProps, ReactNode, useState, useEffect } from "react";
 import { StaticImageData } from "next/image";
 import { twMerge } from "tailwind-merge";
 import Image from "next/image";
-import { Image as ImageIcon, Info, Menu } from "lucide-react";
+import { Info, Menu } from "lucide-react";
 import NextLink from "next/link";
 import { Link } from "react-scroll";
 import { AnimatePresence } from "framer-motion";
 import Portal from "../portal/Portal";
-import { usePathname, useSearchParams } from "next/navigation";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 type INavigationLink = {
   title: string;
@@ -20,8 +20,8 @@ type INavigationLink = {
 type INavigationProps = {
   className?: ComponentProps<"nav">["className"];
   logoURL?: StaticImageData | string;
+  logoWhiteURL?: StaticImageData | string; // 👈 nowe
   logoLink: string;
-  children?: ReactNode;
   links?: INavigationLink[];
   options?: ReactNode;
   navBannerText?: string;
@@ -32,27 +32,36 @@ export const renderNavLink = (
   linkHref: string,
   linkTitle: string,
   onClick: () => void,
+  isScrolled: boolean,
   isAnotherWebsite?: boolean
 ) => {
+  const linkClass = twMerge(
+    "font-medium text-xl lg:text-lg transition-colors duration-300 cursor-pointer",
+    isScrolled
+      ? "text-blue-950 hover:text-blue-800"
+      : "text-white hover:text-slate-200"
+  );
+
   if (isAnotherWebsite) {
     return (
       <NextLink
         onClick={onClick}
-        href={`${linkHref}`}
+        href={linkHref}
         target="_blank"
-        className="text-nav-link-default font-medium text-xl lg:text-lg transition ease-out hover:text-nav-link-hover cursor-pointer"
+        className={linkClass}
       >
         {linkTitle}
       </NextLink>
     );
   }
-  if (pathname === "/")
+
+  if (pathname === "/") {
     return (
       <Link
-        className="text-nav-link-default font-medium text-xl lg:text-lg transition ease-out hover:text-nav-link-hover cursor-pointer"
+        className={linkClass}
         to={linkHref}
-        smooth={true}
-        spy={true}
+        smooth
+        spy
         offset={-100}
         duration={400}
         onClick={onClick}
@@ -60,13 +69,10 @@ export const renderNavLink = (
         {linkTitle}
       </Link>
     );
+  }
 
   return (
-    <NextLink
-      onClick={onClick}
-      href={`/#${linkHref}`}
-      className="text-nav-link-default font-medium text-xl lg:text-lg transition ease-out hover:text-nav-link-hover cursor-pointer"
-    >
+    <NextLink onClick={onClick} href={`/#${linkHref}`} className={linkClass}>
       {linkTitle}
     </NextLink>
   );
@@ -76,24 +82,36 @@ const Navigation = ({
   className,
   logoURL,
   logoLink,
+  logoWhiteURL,
   links,
   options,
   navBannerText,
 }: INavigationProps) => {
   const pathname = usePathname();
-  const [navOpen, setNavOpen] = useState<boolean>(false);
+  const [navOpen, setNavOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > window.innerHeight);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const changeNavOpen = () => {
-    if (navOpen) {
-      setNavOpen(!navOpen);
-    }
+    if (navOpen) setNavOpen(false);
   };
 
   return (
     <nav
-      className={`${twMerge(
-        `sticky top-0 left-0 w-full z-40 bg-nav-background ${className}`
-      )}`}
+      className={twMerge(
+        "fixed top-0 left-0 w-full z-40 transition-colors duration-300 bg-black/80  backdrop-blur-sm py-2",
+        isScrolled ? "bg-white/80 " : "bg-transparent",
+        className
+      )}
     >
       <div className="flex items-center justify-between w-full px-4 xl:px-0 py-4 max-w-screen-xl mx-auto">
         <NextLink href={logoLink} className="w-28">
@@ -102,26 +120,32 @@ const Navigation = ({
               width={150}
               height={150}
               alt="Logo"
-              src={logoURL}
-              className="w-full h-auto aspect-auto object-contain"
-
-              // className="w-10 h-10"
+              src={isScrolled ? logoURL! : logoWhiteURL ?? logoURL!}
+              className="w-full h-auto object-contain"
             />
           ) : (
-            <span className=" text-3xl text-slate-300 font-bold">LOGO</span>
+            <span
+              className={twMerge(
+                "text-3xl font-bold transition-colors",
+                isScrolled ? "text-blue-950" : "text-white"
+              )}
+            >
+              LOGO
+            </span>
           )}
         </NextLink>
 
         {links && (
-          <ul className="hidden lg:flex lg:items-center lg:justify-start lg:gap-8">
-            {links.map((link, linkIndex) => (
-              <li key={linkIndex + 1}>
+          <ul className="hidden lg:flex lg:items-center lg:gap-8">
+            {links.map((link, index) => (
+              <li key={index}>
                 {renderNavLink(
                   pathname,
                   link.href,
                   link.title,
                   changeNavOpen,
-                  link?.isAnotherWebsite
+                  isScrolled,
+                  link.isAnotherWebsite
                 )}
               </li>
             ))}
@@ -129,15 +153,20 @@ const Navigation = ({
         )}
 
         <div className="hidden lg:block">{options}</div>
+
         <button onClick={() => setNavOpen(!navOpen)} className="lg:hidden">
-          <Menu className="text-blue-950 w-7 h-7" />
+          <Menu
+            className={twMerge(
+              "w-7 h-7 transition-colors duration-300",
+              isScrolled ? "text-blue-950" : "text-white"
+            )}
+          />
         </button>
       </div>
 
-      {/* nav banner */}
       {navBannerText && (
         <div className="flex w-full py-2.5 bg-nav-banner-background border-y border-nav-banner-border">
-          <div className="flex items-center justify-center  max-w-screen-xl mx-auto gap-2">
+          <div className="flex items-center justify-center max-w-screen-xl mx-auto gap-2">
             <Info className="w-4 h-4 text-nav-banner-icon" />
             <p className="text-sm text-nav-banner-text font-semibold">
               {navBannerText}
@@ -146,46 +175,40 @@ const Navigation = ({
         </div>
       )}
 
-      {/* create mobile portal */}
       <AnimatePresence>
         {navOpen && (
           <Portal
             portalContainerClassName="flex justify-end"
-            className=" bg-nav-background flex flex-col gap-4 w-80 min-h-screen"
+            className="bg-white flex flex-col gap-4 w-80 min-h-screen"
             onClose={() => setNavOpen(false)}
           >
-            <div className="flex items-center justify-between w-full p-6 bg-nav-background dark:bg-slate-800">
+            <div className="flex items-center justify-between w-full p-6">
               <NextLink href={logoLink}>
-                {logoURL ? (
-                  <Image
-                    width={150}
-                    height={150}
-                    alt="Logo"
-                    src={logoURL}
-                    className="w-full h-auto object-contain"
-                    // className="w-10 h-10"
-                  />
-                ) : (
-                  <span className=" text-3xl text-slate-300 font-bold">
-                    LOGO
-                  </span>
-                )}
+                <Image
+                  width={150}
+                  height={150}
+                  alt="Logo"
+                  src={logoURL as string}
+                  className="object-contain"
+                />
               </NextLink>
-              <button onClick={() => setNavOpen(!navOpen)}>
+
+              <button onClick={() => setNavOpen(false)}>
                 <Menu className="text-blue-950 w-7 h-7" />
               </button>
             </div>
 
-            <div className="flex flex-col px-8 w-full ">
+            <div className="flex flex-col px-8">
               {links && (
-                <ul className="flex items-start justify-start gap-8 flex-col py-8">
-                  {links.map((link, linkIndex) => (
-                    <li key={linkIndex + 1}>
+                <ul className="flex flex-col gap-8 py-8">
+                  {links.map((link, index) => (
+                    <li key={index}>
                       {renderNavLink(
                         pathname,
                         link.href,
                         link.title,
-                        changeNavOpen
+                        changeNavOpen,
+                        true
                       )}
                     </li>
                   ))}

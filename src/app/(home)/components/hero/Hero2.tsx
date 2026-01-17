@@ -32,7 +32,7 @@ const Hero = ({ className, children }: IHeroProps) => {
     <section
       ref={ref}
       className={twMerge(
-        `relative w-full h-[90vh] flex items-center justify-center ${className}`
+        `relative w-full h-[100vh] flex items-center justify-center ${className}`
       )}
     >
       {/* Tło */}
@@ -53,7 +53,7 @@ const Hero = ({ className, children }: IHeroProps) => {
       />
 
       {/* Nakładka */}
-      <div className="absolute inset-0 bg-black/30"></div>
+      <div className="absolute inset-0 bg-black/20"></div>
       {/* Jeśli chcesz czarną: bg-black/50 */}
 
       {/* Treść */}

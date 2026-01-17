@@ -8,7 +8,8 @@ import { sizeStyles, variantStyles } from "@/components/button/Button";
 import { usePathname } from "next/navigation";
 
 //assets
-import Logo from "@/assets/logo.svg";
+import Logo from "@/assets/mederak-logo-black.svg";
+import LogoWhite from "@/assets/mederak-logo-white.svg";
 // import Logo from "@/assets/hero/łm.svg";
 import { twMerge } from "tailwind-merge";
 
@@ -33,9 +34,9 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
     <>
       <Navigation
         logoURL={Logo}
+        logoWhiteURL={LogoWhite}
         logoLink="/"
         links={navLinks}
-        className="border-b border-slate-200/60"
         options={
           <>
             {pathname === "/" ? (
@@ -45,7 +46,7 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
                 spy={true}
                 duration={400}
                 className={twMerge(
-                  ` ${variantStyles["primary"]} ${sizeStyles["xl"]} text-white flex items-center justify-center w-full lg:w-auto cursor-pointer transition ease-out  rounded-xl relative overflow-hidden`
+                  ` ${variantStyles["primary"]} ${sizeStyles["large"]} text-white flex items-center justify-center w-full lg:w-auto cursor-pointer transition ease-out  rounded-xl relative overflow-hidden`
                 )}
               >
                 <span className="absolute top-0 left-[-200%] w-[300%] h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-40 rotate-22 animate-slide"></span>
@@ -55,7 +56,7 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
               <NextLink
                 href={"/#contact"}
                 className={twMerge(
-                  `${variantStyles["primary"]} ${sizeStyles["xl"]} flex items-center justify-center w-full lg:w-auto cursor-pointer transition ease-out`
+                  `${variantStyles["primary"]} ${sizeStyles["large"]} flex items-center justify-center w-full lg:w-auto cursor-pointer transition ease-out`
                 )}
               >
                 Umów konsultację
