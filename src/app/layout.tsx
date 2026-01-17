@@ -18,30 +18,37 @@ const figtree = Figtree({ subsets: ["latin", "latin-ext"] });
 // });
 
 export const metadata: Metadata = {
-  title: "Łukasz Męderak | Trener personalny",
+  title: "Trener personalny Warszawa Wola | Łukasz Męderak",
   description:
-    "Treningi personalne Warszawa Wola ul.Jana Kazimierza. Jeśli chcesz rozpocząć treningi na siłowni pod okiem trenera personalnego, poprawić zdrowie, uzyskać lepszą sylwetkę czy polepszyć wyniki w danej dyscyplinie sportu, to chętnie Ci w tym pomogę.",
+    "Trener personalny Warszawa Wola – Łukasz Męderak. Treningi personalne na siłowni przy ul. Jana Kazimierza. Popraw zdrowie, sylwetkę i wyniki sportowe z doświadczonym trenerem.",
+  keywords: [
+    "trener personalny Warszawa",
+    "trener personalny Wola",
+    "trening personalny Warszawa",
+    "treningi personalne Wola",
+    "siłownia Jana Kazimierza",
+    "trener personalny Warszawa Wola",
+  ],
   openGraph: {
-    title: "Łukasz Męderak | Trener",
+    title: "Trener personalny Warszawa Wola | Łukasz Męderak",
     description:
-      "Treningi personalne Warszawa Wola ul.Jana Kazimierza. Jeśli chcesz rozpocząć treningi na siłowni pod okiem trenera personalnego, poprawić zdrowie, uzyskać lepszą sylwetkę czy polepszyć wyniki w danej dyscyplinie sportu, to chętnie Ci w tym pomogę.",
+      "Szukasz trenera personalnego w Warszawie na Woli? Oferuję indywidualne treningi personalne przy ul. Jana Kazimierza. Skutecznie, bezpiecznie i z planem dopasowanym do Ciebie.",
     url: "https://trener.mederak.com",
-    siteName: "Łukasz Męderak | Trener!",
+    siteName: "Łukasz Męderak – Trener Personalny",
     images: [
       {
-        url: "https://trener.mederak.com/images/lukasz-mederak.png",
+        url: "https://trener.mederak.com/images/lukasz-mederak.jpg",
         width: 800,
         height: 800,
-        alt: "Łukasz Męderak | Trener",
+        alt: "Łukasz Męderak – trener personalny Warszawa Wola",
       },
     ],
-    locale: "pl",
+    locale: "pl_PL",
     type: "website",
   },
-  // other: {
-  //   "trustpilot-one-time-domain-verification-id":
-  //     "57c620d0-4ee3-4fc0-8b7a-04ea80631980",
-  // },
+  alternates: {
+    canonical: "https://trener.mederak.com",
+  },
 };
 
 export default function RootLayout({

@@ -1,5 +1,5 @@
 //components
-import Hero from "./components/hero/Hero";
+import Hero from "./components/hero/Hero2";
 import About from "./components/about/About";
 import MoreInfo from "./components/moreInfo/MoreInfo";
 import Courses from "./components/opinions/Opinions";

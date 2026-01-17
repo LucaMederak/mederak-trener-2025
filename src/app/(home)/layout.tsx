@@ -67,7 +67,7 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
       />
       {children}
       <Footer
-        footerText="Copyright © 2025 Łukasz Męderak"
+        footerText="Copyright © 2026 Łukasz Męderak"
         links={[
           // { name: "Regulamin", href: "/regulations" },
           { name: "Polityka prywatności", href: "/privacy-policy" },
