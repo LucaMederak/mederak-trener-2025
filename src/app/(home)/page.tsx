@@ -11,6 +11,7 @@ import {
 import Blog from "./components/blog/Blog";
 import Cooperation from "./components/cooperation/Cooperation";
 import Contact from "./components/contact/Contact";
+import Opinions from "./opinions/Opinions";
 
 const getArticles = async () => {
   const articlesEntries =
@@ -37,6 +38,7 @@ export default async function Home() {
     <main className="w-full">
       <Hero />
       <Cooperation />
+      <Opinions />
       <About />
       <Courses />
       <Blog articles={articles} />
