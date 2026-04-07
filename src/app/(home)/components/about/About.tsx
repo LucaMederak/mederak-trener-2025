@@ -7,7 +7,8 @@ import { fadeItem } from "@/animations/fade";
 import Image from "next/image";
 
 //assets
-import AboutImg from "@/assets/hero/hero-3.png";
+// import AboutImg from "@/assets/hero/hero-3.png";
+import AboutImg from "@/assets/hero/lukasz-2026-bez-tla-1.png";
 
 const About = () => {
   return (
