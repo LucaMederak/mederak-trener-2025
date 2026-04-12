@@ -8,14 +8,6 @@ import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import Script from "next/script";
 
 const figtree = Figtree({ subsets: ["latin", "latin-ext"] });
-// const raleway = Raleway({
-//   subsets: ["latin", "latin-ext"],
-//   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], // Specify the desired weights
-// });
-// const dmSans = DM_Sans({
-//   subsets: ["latin", "latin-ext"],
-//   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"], // Specify the desired weights
-// });
 
 export const metadata: Metadata = {
   title: "Trener personalny Warszawa Wola | Łukasz Męderak",
@@ -61,26 +53,7 @@ export default function RootLayout({
     <html lang="pl" data-theme="blue">
       {/* rose, lime, yellow, blue, indigo */}
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GTM_ID as string} />
-      <head>
-        {/* {isProduction && (
-          <>
-            Usercentrics - autoblocker
-            <Script
-              src="https://web.cmp.usercentrics.eu/modules/autoblocker.js"
-              strategy="beforeInteractive"
-            />
-
-            Usercentrics - banner
-            <Script
-              id="usercentrics-cmp"
-              src="https://web.cmp.usercentrics.eu/ui/loader.js"
-              data-settings-id="g5KzRUbPrSWlkW"
-              strategy="afterInteractive"
-              async
-            />
-          </>
-        )} */}
-      </head>
+      <head></head>
       <body className={twMerge(` bg-defaultWhite`, figtree.className)}>
         <AlertProvider>
           <AlertDisplay />
