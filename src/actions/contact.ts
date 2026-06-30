@@ -2,7 +2,9 @@
 
 import { ContactSchema } from "@/schemas/contact.schema";
 import * as z from "zod";
-import { transporter } from "@/utils/emailTransporter";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export type Message = {
   type: "success" | "error" | "warning";
@@ -13,24 +15,34 @@ export const sendContactMessage = async (
   values: z.infer<typeof ContactSchema>
 ): Promise<Message> => {
   try {
-    // Walidacja danych - rzuci błąd jeśli nieprawidłowe
     const validatedFields = ContactSchema.parse(values);
 
     const { firstname, lastname, email, message } = validatedFields;
 
-    const emailResponse = await transporter.sendMail({
-      from: `Trener Łukasz Męderak - strona <lukasz@mederak.com>`,
-      to: "lukasz.mederak@gmail.com",
+    const { data, error } = await resend.emails.send({
+      from: "Trener Łukasz Męderak <no-reply@lukasz.mederak.com>",
+      to: ["lukasz.mederak@gmail.com"],
+      replyTo: email,
       subject: `Wiadomość ze strony Trener Łukasz Męderak od ${firstname} ${lastname}`,
       html: `
         <p>Masz nową wiadomość z twojej strony</p><br>
-        <p><strong>Imię i nazwisko: </strong> ${firstname} ${lastname} </p><br>
-        <p><strong>E-mail: </strong> ${email} </p><br>
-        <p><strong>Wiadomość: </strong> ${message} </p><br>
+        <p><strong>Imię i nazwisko:</strong> ${firstname} ${lastname}</p><br>
+        <p><strong>E-mail:</strong> ${email}</p><br>
+        <p><strong>Wiadomość:</strong></p>
+        <p>${message}</p>
       `,
     });
 
-    console.log("Email wysłany:", emailResponse.messageId);
+    if (error) {
+      console.error("Błąd Resend:", error);
+
+      return {
+        type: "error",
+        message: "Nie udało się wysłać wiadomości",
+      };
+    }
+
+    console.log("Email wysłany:", data?.id);
 
     return {
       type: "success",
@@ -57,7 +69,10 @@ export const sendContactMessage = async (
         }
       });
 
-      return { type: "error", message: errorMessages.join(", ") };
+      return {
+        type: "error",
+        message: errorMessages.join(", "),
+      };
     }
 
     return {
