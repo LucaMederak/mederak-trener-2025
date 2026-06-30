@@ -19,6 +19,7 @@ export const sendContactMessage = async (
 
     const { firstname, lastname, email, message } = validatedFields;
 
+    //resend
     const { data, error } = await resend.emails.send({
       from: "Trener Łukasz Męderak <no-reply@lukasz.mederak.com>",
       to: ["lukasz.mederak@gmail.com"],
