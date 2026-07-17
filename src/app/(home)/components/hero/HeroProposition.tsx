@@ -30,7 +30,7 @@ const HeroProposition = ({ className }: HeroPropositionProps) => {
     <section
       ref={ref}
       className={twMerge(
-        "relative flex min-h-screen w-full items-center overflow-hidden bg-[#0D1011] pt-28 text-white",
+        "relative flex min-h-screen w-full items-center overflow-hidden bg-[#0D1011] px-4 pt-28 text-white sm:px-0",
         className
       )}
     >
@@ -42,16 +42,16 @@ const HeroProposition = ({ className }: HeroPropositionProps) => {
       <div className="absolute bottom-0 right-0 h-[30rem] w-[30rem] rounded-full bg-primary-100/18 blur-3xl" />
       <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black/80 to-transparent" />
 
-      <Container className="relative z-10 grid min-h-[calc(100vh-7rem)] items-center gap-10 py-8 lg:grid-cols-[minmax(0,0.82fr)_minmax(28rem,1fr)]">
+      <Container className="relative z-10 grid min-h-[calc(100vh-7rem)] items-center gap-8 py-8 lg:grid-cols-[minmax(0,0.82fr)_minmax(28rem,1fr)] lg:gap-10">
         <motion.div
           variants={fadeAnimation}
           initial="hidden"
           animate={inView ? "show" : "hidden"}
-          className="flex max-w-2xl -translate-x-4 -translate-y-10 flex-col items-start gap-6 xl:-translate-x-8"
+          className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center lg:mx-0 lg:-translate-x-4 lg:-translate-y-10 lg:items-start lg:text-left xl:-translate-x-8"
         >
           <motion.div
             variants={fadeItem}
-            className="flex flex-wrap items-center gap-3"
+            className="flex flex-wrap items-center justify-center gap-3 lg:justify-start"
           >
             <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-white shadow-sm backdrop-blur">
               <MapPin className="h-4 w-4 text-primary-500" />
@@ -65,7 +65,7 @@ const HeroProposition = ({ className }: HeroPropositionProps) => {
           <motion.div variants={fadeItem} className="flex flex-col gap-5">
             <h1 className="max-w-2xl text-4xl font-bold leading-tight md:text-[3.25rem]">
               Łukasz Męderak
-              <span className="block text-primary-500">
+              <span className="hidden text-primary-500 sm:block">
                 Trener Personalny
                 <span className="block">i Dietetyk Kliniczny</span>
               </span>
@@ -78,7 +78,7 @@ const HeroProposition = ({ className }: HeroPropositionProps) => {
 
           <motion.div
             variants={fadeItem}
-            className="flex flex-col gap-3 sm:flex-row"
+            className="flex w-full max-w-sm flex-col gap-3 sm:max-w-none sm:flex-row lg:w-auto"
           >
             <Link
               to="cooperation"
@@ -88,7 +88,7 @@ const HeroProposition = ({ className }: HeroPropositionProps) => {
               className={twMerge(
                 variantStyles["primary"],
                 sizeStyles["xl"],
-                "group relative flex cursor-pointer items-center justify-center gap-3 overflow-hidden rounded-xl border-2 border-primary-400 !text-white shadow-xl shadow-black/20"
+                "group relative flex w-full cursor-pointer items-center justify-center gap-3 overflow-hidden rounded-xl border-2 border-primary-400 !text-white shadow-xl shadow-black/20 sm:w-auto"
               )}
             >
               <span className="absolute top-0 left-[-200%] h-full w-[300%] rotate-12 animate-slide bg-gradient-to-r from-transparent via-white to-transparent opacity-60" />
@@ -100,10 +100,24 @@ const HeroProposition = ({ className }: HeroPropositionProps) => {
               smooth
               spy
               offset={-80}
-              className="flex cursor-pointer items-center justify-center rounded-xl border border-white/20 bg-white/10 px-6 py-3 text-base font-semibold text-white shadow-sm backdrop-blur transition hover:bg-white/20"
+              className="flex w-full cursor-pointer items-center justify-center rounded-xl border border-white/20 bg-white/10 px-6 py-3 text-base font-semibold text-white shadow-sm backdrop-blur transition hover:bg-white/20 sm:w-auto"
             >
               Umów konsultację
             </Link>
+          </motion.div>
+
+          <motion.div
+            variants={fadeItem}
+            className="relative mt-2 flex h-80 w-full max-w-xs items-end justify-center lg:hidden"
+          >
+            <div className="absolute bottom-4 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(249,247,240,0.14),rgba(249,247,240,0.04)_44%,transparent_70%)]" />
+            <div className="absolute bottom-0 h-16 w-[75%] rounded-full bg-black/45 blur-2xl" />
+            <Image
+              src={LukaszCutout}
+              alt="Łukasz Męderak"
+              priority
+              className="relative z-10 h-full w-auto translate-y-4 object-contain drop-shadow-2xl"
+            />
           </motion.div>
         </motion.div>
 
