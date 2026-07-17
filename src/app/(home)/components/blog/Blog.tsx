@@ -32,7 +32,7 @@ const Blog = ({ articles }: { articles: EntryArticleCollection[] }) => {
                 whileInView="show"
                 viewport={{ once: true }}
                 key={article.sys.id}
-                className="bg-slate-100 p-4 border border-slate-200 rounded-xl flex items-center justify-start flex-col gap-4"
+                className="bg-primary-50 p-4 border border-primary-100 rounded-xl flex items-center justify-start flex-col gap-4"
               >
                 {article.fields.image?.fields.file?.url && (
                   <Image
@@ -52,7 +52,7 @@ const Blog = ({ articles }: { articles: EntryArticleCollection[] }) => {
                 </p>
                 <Link
                   href={`/blog/${article.fields.slug}`}
-                  className=" bg-white border border-slate-300 px-4 py-2 rounded-lg text-slate-600 font-semibold text-sm flex items-center gap-3 hover:bg-slate-50"
+                  className=" bg-white border border-primary-200 px-4 py-2 rounded-lg text-primary-900 font-semibold text-sm flex items-center gap-3 hover:bg-primary-50"
                 >
                   Więcej
                 </Link>

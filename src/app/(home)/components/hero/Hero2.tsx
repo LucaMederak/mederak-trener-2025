@@ -94,7 +94,7 @@ const Hero = ({ className, children }: IHeroProps) => {
             spy={true}
             offset={-50}
             className={twMerge(
-              `${variantStyles["primary"]} ${sizeStyles["2xl"]} flex items-center justify-center cursor-pointer transition ease-out border-2 border-blue-400 rounded-xl relative overflow-hidden`
+              `${variantStyles["primary"]} ${sizeStyles["2xl"]} flex items-center justify-center cursor-pointer transition ease-out border-2 border-primary-400 rounded-xl relative overflow-hidden !text-white`
             )}
           >
             <span className="absolute top-0 left-[-200%] w-[300%] h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-40 animate-slide"></span>

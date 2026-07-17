@@ -36,10 +36,10 @@ export const renderNavLink = (
   isAnotherWebsite?: boolean
 ) => {
   const linkClass = twMerge(
-    "font-medium text-xl lg:text-lg transition-colors duration-300 cursor-pointer",
+    "font-semibold text-lg lg:text-[0.82rem] transition-colors duration-300 cursor-pointer",
     isScrolled
-      ? "text-blue-950 hover:text-blue-800"
-      : "text-white hover:text-slate-200"
+      ? "text-nav-link-default hover:text-nav-link-hover"
+      : "text-white/85 hover:text-white"
   );
 
   if (isAnotherWebsite) {
@@ -108,13 +108,19 @@ const Navigation = ({
   return (
     <nav
       className={twMerge(
-        "fixed top-0 left-0 w-full z-40 transition-colors duration-300 bg-black/80  backdrop-blur-sm py-2",
-        isScrolled ? "bg-white/80 " : "bg-transparent",
+        "fixed top-0 left-0 w-full z-40 transition-all duration-300 px-4 pt-6 pb-4",
         className
       )}
     >
-      <div className="flex items-center justify-between w-full px-4 xl:px-0 py-4 max-w-screen-xl mx-auto">
-        <NextLink href={logoLink} className="w-28">
+      <div
+        className={twMerge(
+          "flex items-center justify-between w-full max-w-5xl mx-auto rounded-full border px-3 py-2 transition-all duration-300",
+          isScrolled
+            ? "border-primary-100 bg-white/90 shadow-lg shadow-black/5 backdrop-blur-xl"
+            : "border-white/10 bg-white/5 shadow-xl shadow-black/10 backdrop-blur-md"
+        )}
+      >
+        <NextLink href={logoLink} className="w-20 lg:w-24">
           {logoURL ? (
             <Image
               width={150}
@@ -127,7 +133,7 @@ const Navigation = ({
             <span
               className={twMerge(
                 "text-3xl font-bold transition-colors",
-                isScrolled ? "text-blue-950" : "text-white"
+                isScrolled ? "text-nav-link-default" : "text-white"
               )}
             >
               LOGO
@@ -136,9 +142,22 @@ const Navigation = ({
         </NextLink>
 
         {links && (
-          <ul className="hidden lg:flex lg:items-center lg:gap-8">
+          <ul
+            className={twMerge(
+              "hidden lg:flex lg:items-center lg:gap-1 rounded-full border px-2 py-1.5 transition-colors",
+              isScrolled
+                ? "border-primary-100 bg-primary-50"
+                : "border-white/10 bg-black/10"
+            )}
+          >
             {links.map((link, index) => (
-              <li key={index}>
+              <li
+                key={index}
+                className={twMerge(
+                  "rounded-full px-3 py-1.5 transition-colors",
+                  isScrolled ? "hover:bg-white" : "hover:bg-white/10"
+                )}
+              >
                 {renderNavLink(
                   pathname,
                   link.href,
@@ -152,13 +171,23 @@ const Navigation = ({
           </ul>
         )}
 
-        <div className="hidden lg:block">{options}</div>
+        <div className="hidden lg:flex lg:items-center lg:gap-3">
+          {options}
+        </div>
 
-        <button onClick={() => setNavOpen(!navOpen)} className="lg:hidden">
+        <button
+          onClick={() => setNavOpen(!navOpen)}
+          className={twMerge(
+            "lg:hidden rounded-xl border p-2 transition-colors",
+            isScrolled
+              ? "border-primary-100 bg-primary-50"
+              : "border-white/10 bg-white/5"
+          )}
+        >
           <Menu
             className={twMerge(
-              "w-7 h-7 transition-colors duration-300",
-              isScrolled ? "text-blue-950" : "text-white"
+              "w-6 h-6 transition-colors duration-300",
+              isScrolled ? "text-nav-link-default" : "text-white"
             )}
           />
         </button>
@@ -194,7 +223,7 @@ const Navigation = ({
               </NextLink>
 
               <button onClick={() => setNavOpen(false)}>
-                <Menu className="text-blue-950 w-7 h-7" />
+                <Menu className="text-nav-link-default w-7 h-7" />
               </button>
             </div>
 
@@ -215,7 +244,9 @@ const Navigation = ({
                 </ul>
               )}
 
-              {options}
+              <div className="flex items-center gap-3">
+                {options}
+              </div>
             </div>
           </Portal>
         )}

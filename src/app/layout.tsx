@@ -50,7 +50,7 @@ export default function RootLayout({
 }) {
   const isProduction = process.env.NODE_ENV === "production";
   return (
-    <html lang="pl" data-theme="blue">
+    <html lang="pl" data-theme="beige">
       {/* rose, lime, yellow, blue, indigo */}
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GTM_ID as string} />
       <head></head>

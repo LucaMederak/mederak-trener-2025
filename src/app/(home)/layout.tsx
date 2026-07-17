@@ -46,17 +46,17 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
                 spy={true}
                 duration={400}
                 className={twMerge(
-                  ` ${variantStyles["primary"]} ${sizeStyles["large"]} text-white flex items-center justify-center w-full lg:w-auto cursor-pointer transition ease-out  rounded-xl relative overflow-hidden`
+                  ` ${variantStyles["primary"]} !text-white flex items-center justify-center w-full lg:w-auto cursor-pointer transition ease-out rounded-full relative overflow-hidden px-4 py-2 text-sm font-semibold`
                 )}
               >
-                <span className="absolute top-0 left-[-200%] w-[300%] h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-40 rotate-22 animate-slide"></span>
+                <span className="absolute top-0 left-[-200%] w-[300%] h-full bg-gradient-to-r from-transparent via-white to-transparent opacity-60 rotate-22 animate-slide"></span>
                 Umów konsultację
               </Link>
             ) : (
               <NextLink
                 href={"/#contact"}
                 className={twMerge(
-                  `${variantStyles["primary"]} ${sizeStyles["large"]} flex items-center justify-center w-full lg:w-auto cursor-pointer transition ease-out`
+                  `${variantStyles["primary"]} !text-white flex items-center justify-center w-full lg:w-auto cursor-pointer transition ease-out rounded-full px-4 py-2 text-sm font-semibold`
                 )}
               >
                 Umów konsultację

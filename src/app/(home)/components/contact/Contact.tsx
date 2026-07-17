@@ -151,6 +151,7 @@ const Contact = () => {
               />
               <Button
                 type="submit"
+                className="!text-white hover:!text-white disabled:!text-white"
                 disabled={isPending || !form.formState.isValid}
               >
                 {isPending && <LoadingSpinner />}

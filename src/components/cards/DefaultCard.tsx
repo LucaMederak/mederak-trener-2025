@@ -40,11 +40,11 @@ const DefaultCard = ({
           </span>
         )}
 
-        <h3 className="text-lg font-semibold text-blue-950 ">{title}</h3>
+        <h3 className="text-lg font-semibold text-primary-900 ">{title}</h3>
       </div>
 
       {description && (
-        <p className=" font-normal text-blue-950">{description}</p>
+        <p className=" font-normal text-primary-900">{description}</p>
       )}
     </motion.div>
   );

@@ -17,7 +17,7 @@ const Header = ({ type, text, headerClassName }: IHeaderProps) => {
   const HeaderComponent = type;
 
   const headerDefaultClassName =
-    "text-shop-sectionHeading-text-heading font-bold text-blue-950";
+    "text-shop-sectionHeading-text-heading font-bold text-primary-900";
 
   const className: IHeaderStyles = {
     h1: `${headerDefaultClassName} text-4xl lg:text-6xl lg:leading-tight`,
@@ -126,7 +126,7 @@ const PageHeading = ({
       )}
 
       {description && (
-        <p className=" text-base lg:text-lg text-blue-950 font-medium">
+        <p className=" text-base lg:text-lg text-primary-900 font-medium">
           {description}
         </p>
       )}

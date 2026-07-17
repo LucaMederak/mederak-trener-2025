@@ -1,5 +1,5 @@
 //components
-import Hero from "./components/hero/Hero2";
+import Hero from "./components/hero/HeroProposition";
 import About from "./components/about/About";
 import MoreInfo from "./components/moreInfo/MoreInfo";
 import Courses from "./components/opinions/Opinions";
@@ -11,6 +11,7 @@ import {
 import Blog from "./components/blog/Blog";
 import Cooperation from "./components/cooperation/Cooperation";
 import Contact from "./components/contact/Contact";
+import FounderProjects from "./components/founderProjects/FounderProjects";
 import Opinions from "./opinions/Opinions";
 
 const getArticles = async () => {
@@ -40,6 +41,7 @@ export default async function Home() {
       <Cooperation />
       <Opinions />
       <About />
+      <FounderProjects />
       <Courses />
       <Blog articles={articles} />
       <MoreInfo />

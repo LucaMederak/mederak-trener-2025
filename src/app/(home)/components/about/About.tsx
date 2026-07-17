@@ -26,7 +26,7 @@ const About = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="flex items-start justify-start flex-col lg:flex-row gap-6 lg:gap-2 lg:pt-6 lg:pb-4 rounded-xl bg-slate-100"
+          className="flex items-start justify-start flex-col lg:flex-row gap-6 lg:gap-2 lg:pt-6 lg:pb-4 rounded-xl bg-primary-50"
         >
           <div className="flex items-start justify-start flex-col gap-6 w-full lg:w-auto px-8 pt-8 xs:pt-12 xs:px-12">
             <h2 className="text-blue-950 text-3xl font-bold">Łukasz Męderak</h2>

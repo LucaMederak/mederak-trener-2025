@@ -41,7 +41,7 @@ const opinions = [
 const Opinions = () => {
   const [showAllFeatures, setShowAllFeatures] = useState(false);
   return (
-    <section id="opinions" className="w-full py-8 md:py-12">
+    <section id="opinions" className="w-full py-8 md:py-12 bg-primary-50">
       <Container>
         <PageHeading
           title="Zobacz opinie"
@@ -58,14 +58,14 @@ const Opinions = () => {
         >
           {!showAllFeatures && (
             <div
-              className={`w-full h-56 absolute bottom-0 flex items-end pb-6 justify-center bg-gradient-to-t from-white via-white/50 `}
+              className={`w-full h-56 absolute bottom-0 flex items-end pb-6 justify-center bg-gradient-to-t from-primary-50 via-primary-50/50 `}
             >
               <button
                 onClick={() => setShowAllFeatures(true)}
-                className="mt-16 bg-white border border-slate-300 px-4 py-2 rounded-lg text-slate-600 font-semibold text-base flex items-center gap-3 hover:bg-slate-50 shadow-lg shadow-slate-200"
+                className="mt-16 bg-white border border-primary-200 px-4 py-2 rounded-lg text-primary-900 font-semibold text-base flex items-center gap-3 hover:bg-primary-50 shadow-lg shadow-primary-100"
               >
                 Pokaż wszystkie
-                <UnfoldVertical className="text-slate-600 h-4 w-4" />
+                <UnfoldVertical className="text-primary-900 h-4 w-4" />
               </button>
             </div>
           )}
@@ -77,7 +77,7 @@ const Opinions = () => {
               whileInView="show"
               viewport={{ once: true }}
               key={opinion.id}
-              className="bg-slate-100 p-4 border border-slate-200 rounded-xl"
+              className="bg-white p-4 border border-primary-100 rounded-xl"
             >
               <Image
                 key={opinion.id}
