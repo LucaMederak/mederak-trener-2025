@@ -47,11 +47,11 @@ const HeroProposition = ({ className }: HeroPropositionProps) => {
           variants={fadeAnimation}
           initial="hidden"
           animate={inView ? "show" : "hidden"}
-          className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center lg:mx-0 lg:-translate-x-4 lg:-translate-y-10 lg:items-start lg:text-left xl:-translate-x-8"
+          className="mx-auto flex max-w-2xl flex-col items-center gap-6 text-center md:mx-0 md:items-start md:text-left lg:-translate-x-4 lg:-translate-y-10 xl:-translate-x-8"
         >
           <motion.div
             variants={fadeItem}
-            className="flex flex-wrap items-center justify-center gap-3 lg:justify-start"
+            className="flex flex-wrap items-center justify-center gap-3 md:justify-start"
           >
             <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-white shadow-sm backdrop-blur">
               <MapPin className="h-4 w-4 text-primary-500" />
@@ -71,7 +71,7 @@ const HeroProposition = ({ className }: HeroPropositionProps) => {
               </span>
             </h1>
             <p className="max-w-xl text-lg font-medium leading-relaxed text-white/72 md:text-xl">
-              Pomagam poprawić sylwetkę, zdrowie i sprawność przez trening
+              Pomagam poprawić sylwetkę, zdrowie&nbsp;i&nbsp;sprawność przez trening
               dopasowany do Twoich możliwości oraz rozsądne wsparcie żywieniowe.
             </p>
           </motion.div>
@@ -108,9 +108,9 @@ const HeroProposition = ({ className }: HeroPropositionProps) => {
 
           <motion.div
             variants={fadeItem}
-            className="relative mt-2 flex h-80 w-full max-w-xs items-end justify-center lg:hidden"
+            className="relative mt-2 flex h-96 w-full max-w-sm items-end justify-center lg:hidden"
           >
-            <div className="absolute bottom-4 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(249,247,240,0.14),rgba(249,247,240,0.04)_44%,transparent_70%)]" />
+            <div className="absolute bottom-4 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(249,247,240,0.14),rgba(249,247,240,0.04)_44%,transparent_70%)]" />
             <div className="absolute bottom-0 h-16 w-[75%] rounded-full bg-black/45 blur-2xl" />
             <Image
               src={LukaszCutout}
