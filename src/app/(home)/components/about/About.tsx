@@ -51,7 +51,7 @@ const About = () => {
             <Image
               alt="Zdjęcie: Łukasz Męderak"
               src={AboutImg}
-              className="w-full max-w-md object-contain lg:w-[520px] lg:max-w-none"
+              className="w-full max-w-xs object-contain sm:max-w-sm md:max-w-md lg:w-[380px] lg:max-w-none xl:w-[440px]"
             />
           </div>
         </motion.div>

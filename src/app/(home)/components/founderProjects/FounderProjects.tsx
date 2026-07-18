@@ -38,7 +38,7 @@ const FounderProjects = () => {
             Projekty
           </span>
           <h2 className="text-3xl font-semibold text-primary-900 md:text-4xl">
-            Co-founder Zonvio i Fitly by Zonvio
+            Co-founder Zonvio&nbsp;i&nbsp;Fitly by Zonvio
           </h2>
           <p className="text-base font-medium leading-relaxed text-primary-900/65">
             Poza pracą trenerską współtworzę produkty cyfrowe dla branży
