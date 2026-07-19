@@ -10,6 +10,7 @@ import { Link } from "react-scroll";
 import { AnimatePresence } from "framer-motion";
 import Portal from "../portal/Portal";
 import { usePathname } from "next/navigation";
+import LanguageSwitcher from "@/components/languageSwitcher/LanguageSwitcher";
 
 type INavigationLink = {
   title: string;
@@ -181,25 +182,32 @@ const Navigation = ({
         )}
 
         <div className="hidden lg:flex lg:items-center lg:gap-3">
+          <LanguageSwitcher variant={isHeroNav ? "dark" : "light"} />
           {options}
         </div>
 
-        <button
-          onClick={() => setNavOpen(!navOpen)}
-          className={twMerge(
-            "lg:hidden rounded-xl border p-2 transition-colors",
-            isLightNav
-              ? "border-primary-100 bg-primary-50"
-              : "border-white/10 bg-white/5"
-          )}
-        >
-          <Menu
-            className={twMerge(
-              "w-6 h-6 transition-colors duration-300",
-              isLightNav ? "text-nav-link-default" : "text-white"
-            )}
+        <div className="flex items-center gap-2 lg:hidden">
+          <LanguageSwitcher
+            variant={isHeroNav ? "dark" : "light"}
+            className="w-auto"
           />
-        </button>
+          <button
+            onClick={() => setNavOpen(!navOpen)}
+            className={twMerge(
+              "rounded-xl border p-2 transition-colors",
+              isLightNav
+                ? "border-primary-100 bg-primary-50"
+                : "border-white/10 bg-white/5"
+            )}
+          >
+            <Menu
+              className={twMerge(
+                "w-6 h-6 transition-colors duration-300",
+                isLightNav ? "text-nav-link-default" : "text-white"
+              )}
+            />
+          </button>
+        </div>
       </div>
 
       {navBannerText && (

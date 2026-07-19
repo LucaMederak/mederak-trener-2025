@@ -1,18 +1,39 @@
+"use client";
+
 import Container from "@/components/container/Container";
 import PageHeading from "@/components/pageHeading/PageHeading";
+import { useLanguage } from "@/context/Language.context";
 import { Mail } from "lucide-react";
 
+const translations = {
+  pl: {
+    title: "Skontaktuj się ze mną",
+    description:
+      "Chcesz umówić konsultację lub zapytać o współpracę? Napisz bezpośrednio.",
+    badge: "Kontakt",
+  },
+  en: {
+    title: "Contact Me",
+    description:
+      "Want to book a consultation or ask about cooperation? Message me directly.",
+    badge: "Contact",
+  },
+};
+
 const Contact = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <section id="contact" className="w-full bg-primary-50/35 py-10 md:py-14">
       <Container className="flex flex-col items-center justify-center text-center">
         <PageHeading
-          title="Skontaktuj się ze mną"
-          description="Chcesz umówić konsultację lub zapytać o współpracę? Napisz bezpośrednio."
+          title={t.title}
+          description={t.description}
           headerType="h2"
           position="center"
           badgeType="default"
-          badgeText="Kontakt"
+          badgeText={t.badge}
         />
 
         <div className="mt-1 flex flex-col items-center gap-4">

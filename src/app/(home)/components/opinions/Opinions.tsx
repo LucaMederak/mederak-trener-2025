@@ -4,6 +4,7 @@ import CardList from "@/components/cards/CardList";
 import Image from "next/image";
 import Container from "@/components/container/Container";
 import PageHeading from "@/components/pageHeading/PageHeading";
+import { useLanguage } from "@/context/Language.context";
 import { motion } from "framer-motion";
 import { fadeItem } from "@/animations/fade";
 
@@ -39,17 +40,35 @@ const courses = [
   { id: 9, src: Course9 },
 ];
 
+const translations = {
+  pl: {
+    title: "Kursy i szkolenia",
+    badge: "Kursy",
+    showAll: "Pokaż wszystkie",
+    alt: "Kurs",
+  },
+  en: {
+    title: "Courses and Training",
+    badge: "Courses",
+    showAll: "Show all",
+    alt: "Course",
+  },
+};
+
 const Courses = () => {
   const [showAllFeatures, setShowAllFeatures] = useState(false);
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <section id="courses" className="w-full py-8 md:py-12 bg-primary-50">
       <Container>
         <PageHeading
-          title="Kursy i szkolenia"
+          title={t.title}
           headerType="h2"
           position="center"
           badgeType="default"
-          badgeText="Kursy"
+          badgeText={t.badge}
         />
         <CardList
           className={`relative ${
@@ -64,7 +83,7 @@ const Courses = () => {
                 onClick={() => setShowAllFeatures(true)}
                 className="mt-16 bg-white border border-primary-200 px-4 py-2 rounded-lg text-primary-900 font-semibold text-base flex items-center gap-3 hover:bg-primary-50 shadow-lg shadow-primary-100"
               >
-                Pokaż wszystkie
+                {t.showAll}
                 <UnfoldVertical className="text-primary-900 h-4 w-4" />
               </button>
             </div>
@@ -82,7 +101,7 @@ const Courses = () => {
               <Image
                 key={course.id}
                 src={course.src}
-                alt={`Kurs ${course.id}`}
+                alt={`${t.alt} ${course.id}`}
                 width={500}
                 height={500}
                 className="aspect-auto object-contain rounded-xl"

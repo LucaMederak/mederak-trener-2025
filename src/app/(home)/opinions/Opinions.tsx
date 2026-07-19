@@ -4,6 +4,7 @@ import CardList from "@/components/cards/CardList";
 import Image from "next/image";
 import Container from "@/components/container/Container";
 import PageHeading from "@/components/pageHeading/PageHeading";
+import { useLanguage } from "@/context/Language.context";
 import { motion } from "framer-motion";
 import { fadeItem } from "@/animations/fade";
 
@@ -27,6 +28,21 @@ const opinions = [
   { id: 6, src: Opinion6 },
 ];
 
+const translations = {
+  pl: {
+    title: "Zobacz opinie",
+    badge: "Opinie",
+    showAll: "Pokaż wszystkie",
+    alt: "Opinia",
+  },
+  en: {
+    title: "See Client Reviews",
+    badge: "Reviews",
+    showAll: "Show all",
+    alt: "Review",
+  },
+};
+
 // function shuffleArray<T>(array: T[]): T[] {
 //   const shuffled = [...array]; // Tworzymy kopię, aby nie mutować oryginalnej tablicy
 //   for (let i = shuffled.length - 1; i > 0; i--) {
@@ -40,16 +56,19 @@ const opinions = [
 
 const Opinions = () => {
   const [showAllFeatures, setShowAllFeatures] = useState(false);
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <section id="opinions" className="w-full py-8 md:py-12 bg-primary-50">
       <Container>
         <PageHeading
-          title="Zobacz opinie"
+          title={t.title}
           headerType="h2"
           // description="Ten webinar pomoże Ci jeśli występują u Ciebie poniższe dolegliwości."
           position="center"
           badgeType="default"
-          badgeText="Opinie"
+          badgeText={t.badge}
         />
         <CardList
           className={`relative ${
@@ -64,7 +83,7 @@ const Opinions = () => {
                 onClick={() => setShowAllFeatures(true)}
                 className="mt-16 bg-white border border-primary-200 px-4 py-2 rounded-lg text-primary-900 font-semibold text-base flex items-center gap-3 hover:bg-primary-50 shadow-lg shadow-primary-100"
               >
-                Pokaż wszystkie
+                {t.showAll}
                 <UnfoldVertical className="text-primary-900 h-4 w-4" />
               </button>
             </div>
@@ -82,7 +101,7 @@ const Opinions = () => {
               <Image
                 key={opinion.id}
                 src={opinion.src}
-                alt={`Opinia ${opinion.id}`}
+                alt={`${t.alt} ${opinion.id}`}
                 width={500}
                 height={500}
                 className="aspect-auto object-contain rounded-xl"

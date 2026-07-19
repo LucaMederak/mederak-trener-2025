@@ -1,3 +1,5 @@
+"use client";
+
 import Container from "@/components/container/Container";
 import FitlyLogo from "@/assets/brands/fitly-logo-full.svg";
 import Image from "next/image";
@@ -5,6 +7,7 @@ import Link from "next/link";
 import React from "react";
 import ZonvioIcon from "@/assets/brands/zonvio-logo-icon-black.svg";
 import { ArrowUpRight, LinkIcon } from "lucide-react";
+import { useLanguage } from "@/context/Language.context";
 
 const projects = [
   {
@@ -14,8 +17,10 @@ const projects = [
     logo: null,
     icon: ZonvioIcon,
     iconOnly: true,
-    description:
-      "Strefa cyfrowej sprzedaży dla biznesów online, twórców i marek eksperckich.",
+    descriptions: {
+      pl: "Strefa cyfrowej sprzedaży dla biznesów online, twórców i marek eksperckich.",
+      en: "A digital sales zone for online businesses, creators and expert-led brands.",
+    },
   },
   {
     name: "Fitly by Zonvio",
@@ -24,25 +29,44 @@ const projects = [
     logo: FitlyLogo,
     icon: null,
     iconOnly: false,
-    description:
-      "Platforma dla trenerów, dietetyków i specjalistów pracujących z klientami online.",
+    descriptions: {
+      pl: "Platforma dla trenerów, dietetyków i specjalistów pracujących z klientami online.",
+      en: "A platform for trainers, dietitians and specialists working with clients online.",
+    },
   },
 ];
 
+const translations = {
+  pl: {
+    badge: "Projekty",
+    title: "Co-founder Zonvio\u00a0i\u00a0Fitly by Zonvio",
+    description:
+      "Poza pracą trenerską współtworzę produkty cyfrowe dla branży fitness, dietetyki i biznesów eksperckich.",
+  },
+  en: {
+    badge: "Projects",
+    title: "Co-founder of Zonvio\u00a0and\u00a0Fitly by Zonvio",
+    description:
+      "Beyond coaching, I co-create digital products for fitness, nutrition and expert-led online businesses.",
+  },
+};
+
 const FounderProjects = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <section className="w-full bg-primary-50 py-8 md:py-10">
       <Container>
         <div className="mx-auto mb-8 flex max-w-3xl flex-col items-center gap-3 text-center">
-          <span className="rounded-xl border border-dashed border-primary-200 bg-white px-3 py-1 text-sm font-semibold text-primary-900/70">
-            Projekty
+          <span className="rounded-full border border-[#D5B89A]/55 bg-[#EFE2D3] px-2.5 py-0.5 text-xs font-semibold text-[#3B2B1E]">
+            {t.badge}
           </span>
           <h2 className="text-3xl font-semibold text-primary-900 md:text-4xl">
-            Co-founder Zonvio&nbsp;i&nbsp;Fitly by Zonvio
+            {t.title}
           </h2>
           <p className="text-base font-medium leading-relaxed text-primary-900/65">
-            Poza pracą trenerską współtworzę produkty cyfrowe dla branży
-            fitness, dietetyki i biznesów eksperckich.
+            {t.description}
           </p>
         </div>
 
@@ -86,9 +110,9 @@ const FounderProjects = () => {
                   {project.name}
                 </h3>
                 <p className="mt-2 text-sm font-medium leading-relaxed text-primary-900/70">
-                  {project.description}
+                  {project.descriptions[language]}
                 </p>
-                <span className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary-100 bg-primary-50 px-3 py-1.5 text-sm font-semibold text-primary-900/75">
+                <span className="mt-4 inline-flex items-center gap-2 rounded-full border border-[#D5B89A]/55 bg-[#EFE2D3] px-2.5 py-1 text-xs font-semibold text-[#3B2B1E]">
                   <LinkIcon className="h-3.5 w-3.5" />
                   {project.domain}
                 </span>

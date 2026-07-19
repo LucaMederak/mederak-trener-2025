@@ -1,220 +1,208 @@
-import React from "react";
+"use client";
 
-//components
 import Container from "@/components/container/Container";
 import PageHeading from "@/components/pageHeading/PageHeading";
+import { useLanguage } from "@/context/Language.context";
+
+const policy = {
+  pl: {
+    title: "Polityka prywatności",
+    description: "Zapoznaj się z polityką prywatności",
+    sections: [
+      {
+        title: "I. Postanowienia ogólne",
+        items: [
+          "Niniejsza polityka prywatności określa zasady i warunki zbierania, przetwarzania i przechowywania danych Użytkowników, niezbędnych do świadczenia usług drogą elektroniczną za pośrednictwem serwisu internetowego lukasz.mederak.com.",
+          "Serwis zbiera wyłącznie dane osobowe niezbędne do świadczenia i rozwoju usług w nim oferowanych.",
+          "Użytkownikiem jest każda osoba fizyczna, której dane dotyczą, korzystająca z serwisu internetowego lukasz.mederak.com lub usług elektronicznych dostępnych za pośrednictwem Serwisu.",
+          "Dane osobowe zbierane za pośrednictwem Serwisu są przetwarzane zgodnie z RODO oraz ustawą o ochronie danych osobowych z dnia 10 maja 2018 r.",
+        ],
+      },
+      {
+        title: "II. Administrator danych",
+        items: [
+          "Administratorem danych osobowych zbieranych przez Serwis jest Łukasz Męderak, adres poczty elektronicznej: lukasz@mederak.com.",
+        ],
+      },
+      {
+        title: "III. Cel zbierania danych osobowych",
+        items: [
+          "Dane osobowe użytkowników są przetwarzane w celu komunikacji z Użytkownikiem, promocji oferty Administratora, działań marketingowych, remarketingowych, afiliacyjnych, społecznościowych, analitycznych i statystycznych.",
+          "W przypadku zgody użytkownika dane osobowe mogą być wykorzystywane w celach marketingowych, w tym do przesyłania informacji o produktach, usługach, promocjach oraz nowościach w Serwisie.",
+          "Administrator przetwarza dane osobowe wyłącznie w zakresie i celach określonych w polityce prywatności oraz zgodnie z obowiązującymi przepisami prawa.",
+        ],
+      },
+      {
+        title: "IV. Sposób pozyskiwania danych osobowych",
+        items: [
+          "Administrator pozyskuje dane osobowe bezpośrednio od Użytkownika za pośrednictwem Serwisu, poprzez dostępne funkcjonalności i narzędzia do komunikacji. Podanie danych osobowych jest dobrowolne.",
+        ],
+      },
+      {
+        title: "V. Rodzaj przetwarzanych danych osobowych",
+        items: [
+          "Administrator może przetwarzać następujące dane osobowe Użytkownika: adres e-mail, imię i nazwisko oraz numer telefonu.",
+        ],
+      },
+      {
+        title: "VI. Okres przetwarzania danych osobowych",
+        items: [
+          "Administrator przechowuje dane osobowe przez okres niezbędny do realizacji celów, dla których dane zostały zebrane.",
+          "W przypadku przetwarzania danych na podstawie zgody dane są przechowywane przez okres obowiązywania zgody.",
+          "Po upływie okresu przechowywania Administrator usuwa dane lub uniemożliwia dostęp do nich.",
+          "W przypadku wycofania zgody Administrator usuwa dane lub uniemożliwia dostęp do nich w ciągu 30 dni od otrzymania żądania, chyba że przepisy prawa wymagają dłuższego przechowywania.",
+        ],
+      },
+      {
+        title: "VII. Udostępnianie danych osobowych",
+        items: [
+          "Dane osobowe Użytkownika nie są przekazywane przez Administratora podmiotom trzecim.",
+        ],
+      },
+      {
+        title: "VIII. Prawa użytkownika",
+        items: [
+          "Użytkownik ma prawo dostępu do swoich danych osobowych, otrzymania ich kopii, sprostowania, usunięcia, ograniczenia przetwarzania, wniesienia sprzeciwu oraz przenoszenia danych.",
+          "W celu skorzystania z praw dotyczących danych osobowych Użytkownik może skontaktować się z Administratorem: Łukasz Męderak, lukasz@mederak.com.",
+          "Użytkownik ma prawo do wniesienia skargi do organu nadzorczego w przypadku naruszenia przepisów o ochronie danych osobowych.",
+          "Administrator zapewnia użytkownikom możliwość realizacji ich praw zgodnie z obowiązującymi przepisami prawa.",
+        ],
+      },
+      {
+        title: "IX. Pliki cookies",
+        items: [
+          "Serwis korzysta z plików cookies w celu usprawnienia korzystania z witryny oraz dostarczania spersonalizowanych treści i reklam.",
+          "Pliki cookies to niewielkie pliki tekstowe zapisywane na urządzeniu użytkownika podczas korzystania z witryny. Umożliwiają identyfikację przeglądarki lub urządzenia oraz zapamiętanie preferencji i ustawień.",
+          "Serwis wykorzystuje pliki cookies sesyjne oraz trwałe.",
+          "Użytkownik może zablokować lub ograniczyć używanie plików cookies w ustawieniach przeglądarki. Może to jednak wpłynąć na funkcjonalność witryny.",
+          "Użytkownik może określić zakres dostępu plików cookies do swojego urządzenia w ustawieniach przeglądarki.",
+        ],
+      },
+      {
+        title: "X. Postanowienia końcowe",
+        items: [
+          "Administrator zastrzega sobie prawo do wprowadzania zmian w Polityce Prywatności. Zmiany będą publikowane na stronie internetowej i obowiązują od momentu publikacji.",
+          "Informacja o wprowadzonych zmianach może pojawić się w formie komunikatu dostępnego w Serwisie.",
+          "W sprawach nieuregulowanych w niniejszej Polityce prywatności obowiązują przepisy RODO i przepisy prawa polskiego.",
+        ],
+      },
+    ],
+  },
+  en: {
+    title: "Privacy Policy",
+    description: "Read the privacy policy",
+    sections: [
+      {
+        title: "I. General Provisions",
+        items: [
+          "This privacy policy sets out the rules and conditions for collecting, processing and storing Users’ data necessary to provide electronic services through the website lukasz.mederak.com.",
+          "The website collects only personal data necessary to provide and develop the services offered through it.",
+          "A User is any natural person whose data is concerned and who uses lukasz.mederak.com or electronic services available through the website.",
+          "Personal data collected through the website is processed in accordance with the GDPR and the Polish Personal Data Protection Act of 10 May 2018.",
+        ],
+      },
+      {
+        title: "II. Data Controller",
+        items: [
+          "The controller of personal data collected through the website is Łukasz Męderak, email address: lukasz@mederak.com.",
+        ],
+      },
+      {
+        title: "III. Purpose of Collecting Personal Data",
+        items: [
+          "Users’ personal data is processed for communication with the User, promotion of the Controller’s offer, marketing, remarketing, affiliation, social media, analytical and statistical activities.",
+          "If the User gives consent, personal data may be used for marketing purposes, including sending information about products, services, promotions and website updates.",
+          "The Controller processes personal data only within the scope and purposes specified in this privacy policy and in accordance with applicable law.",
+        ],
+      },
+      {
+        title: "IV. How Personal Data Is Collected",
+        items: [
+          "The Controller obtains personal data directly from the User through the website, via available features and communication tools. Providing personal data is voluntary.",
+        ],
+      },
+      {
+        title: "V. Types of Personal Data Processed",
+        items: [
+          "The Controller may process the User’s personal data such as email address, first and last name and phone number.",
+        ],
+      },
+      {
+        title: "VI. Personal Data Retention Period",
+        items: [
+          "The Controller stores personal data for the period necessary to achieve the purposes for which the data was collected.",
+          "If data is processed on the basis of consent, it is stored for the duration of that consent.",
+          "After the retention period expires, the Controller deletes the data or prevents access to it.",
+          "If consent is withdrawn, the Controller deletes the data or prevents access to it within 30 days of receiving the request, unless applicable law requires a longer retention period.",
+        ],
+      },
+      {
+        title: "VII. Sharing Personal Data",
+        items: [
+          "The User’s personal data is not transferred by the Controller to third parties.",
+        ],
+      },
+      {
+        title: "VIII. User Rights",
+        items: [
+          "The User has the right to access their personal data, receive a copy, rectify it, erase it, restrict processing, object to processing and transfer their data.",
+          "To exercise rights related to personal data, the User may contact the Controller: Łukasz Męderak, lukasz@mederak.com.",
+          "The User has the right to lodge a complaint with a supervisory authority if data protection regulations are violated.",
+          "The Controller enables Users to exercise their rights in accordance with applicable law.",
+        ],
+      },
+      {
+        title: "IX. Cookies",
+        items: [
+          "The website uses cookies to improve website use and provide personalized content and advertisements.",
+          "Cookies are small text files stored on the User’s device when using the website. They allow the browser or device to be identified and preferences and settings to be remembered.",
+          "The website uses session cookies and persistent cookies.",
+          "The User may block or restrict cookies in the browser settings. However, this may affect website functionality.",
+          "The User may define the scope of cookie access to their device in the browser settings.",
+        ],
+      },
+      {
+        title: "X. Final Provisions",
+        items: [
+          "The Controller reserves the right to amend this Privacy Policy. Changes will be published on the website and become effective upon publication.",
+          "Information about changes may appear as a notice available on the website.",
+          "Matters not regulated by this Privacy Policy are governed by the GDPR and Polish law.",
+        ],
+      },
+    ],
+  },
+};
 
 const PrivacyPolicyPage = () => {
+  const { language } = useLanguage();
+  const t = policy[language];
+
   return (
     <section className="w-full py-6 lg:py-16">
       <Container>
         <PageHeading
-          title="Polityka prywatności"
+          title={t.title}
           headerType="h1"
-          description="Zapoznaj się z polityką prywatności"
+          description={t.description}
           position="center"
           headerClassName="lg:text-4xl"
         />
-        <div className="flex items-start justify-start flex-col gap-8 w-full">
-          <ul className="flex items-start justify-start flex-col gap-4 list-decimal text-blue-950 [&>h2]:text-xl [&>h2]:font-medium [&>li]:text-lg [&>li]:font-normal [&>li]:ml-4">
-            <h2>I. Postanowienia ogólne</h2>
-            <li>
-              Niniejsza polityka prywatności określa zasady i warunki zbierania,
-              przetwarzania i przechowywania danych danych Użytkowników,
-              niezbędnych do świadczenia usług drogą elektroniczną za
-              pośrednictwem serwisu internetowego lukasz.mederak.com (dalej jako
-              „Serwis”).
-            </li>
-            <li>
-              Serwis zbiera wyłącznie dane osobowe niezbędne do świadczenia i
-              rozwoju usług w nim oferowanych.
-            </li>
-            <li>
-              Użytkownikiem jest każda osoba fizyczna, której dane dotyczą,
-              korzystająca z serwisu internetowego lukasz.mederak.com lub usług
-              elektronicznych dostępnych za pośrednictwem Serwisu.
-            </li>
-            <li>
-              Niniejsza polityka prywatności jest zgodna z obowiązującym prawem.
-              Dane osobowe zbierane za pośrednictwem Serwisu są przetwarzane
-              zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE)
-              2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób
-              fizycznych w związku z przetwarzaniem danych osobowych i w sprawie
-              swobodnego przepływu takich danych oraz uchylenia dyrektywy
-              95/46/WE (ogólne rozporządzenie o ochronie danych, dalej RODO)
-              oraz ustawą o ochronie danych osobowych z dnia 10 maja 2018 r.
-            </li>
-          </ul>
-          <ul className="flex items-start justify-start flex-col gap-4 list-decimal text-blue-950 [&>h2]:text-xl [&>h2]:font-medium [&>li]:text-lg [&>li]:font-normal [&>li]:ml-4">
-            <h2>II. Administrator danych</h2>
-            <li>
-              Administratorem danych osobowych zbieranych przez Serwis jest
-              Łukasz Męderak, adres poczty elektronicznej:
-              mederak.trener@gmail.com (dalej jako „Administrator”).
-            </li>
-          </ul>
-          <ul className="flex items-start justify-start flex-col gap-4 list-decimal text-blue-950 [&>h2]:text-xl [&>h2]:font-medium [&>li]:text-lg [&>li]:font-normal [&>li]:ml-4">
-            <h2>III. Cel zbierania danych osobowych</h2>
-            <li>
-              Dane osobowe użytkowników zbierane przez Serwis są przetwarzane w
-              celu umożliwienia korzystania z usług świadczonych przez naszą
-              firmę. Administrator przetwarza dane osobowe Użytkownika w
-              następujących celach:
-              <ol className="list-disc ml-4 mt-2">
-                <li>komunikacji z Użytkownikiem,</li>
-                <li>
-                  wysyłki newslettera (po wyrażeniu zgody Użytkownika na jego
-                  otrzymywanie),
-                </li>
-                <li>promocji oferty Administratora,</li>
-                <li>marketingu, remarketingu, afiliacji,</li>
-                <li>świadczenia usług społecznościowych,</li>
-                <li>działań analitycznych i statystycznych,</li>
+        <div className="flex w-full flex-col items-start justify-start gap-8">
+          {t.sections.map((section) => (
+            <section
+              key={section.title}
+              className="flex w-full flex-col items-start justify-start gap-4 text-blue-950"
+            >
+              <h2 className="text-xl font-semibold">{section.title}</h2>
+              <ol className="flex list-decimal flex-col gap-4 pl-5">
+                {section.items.map((item) => (
+                  <li key={item} className="text-lg font-normal leading-relaxed">
+                    {item}
+                  </li>
+                ))}
               </ol>
-            </li>
-            <li>
-              W przypadku zgody użytkownika, dane osobowe mogą być
-              wykorzystywane w celach marketingowych, w tym do przesyłania
-              informacji o naszych produktach i usługach, promocjach oraz
-              nowościach w Serwisie.
-            </li>
-            <li>
-              Administrator przetwarza dane osobowe wyłącznie w zakresie i
-              celach określonych w polityce prywatności oraz zgodnie z
-              obowiązującymi przepisami prawa.
-            </li>
-          </ul>
-          <ul className="flex items-start justify-start flex-col gap-4 list-decimal text-blue-950 [&>h2]:text-xl [&>h2]:font-medium [&>li]:text-lg [&>li]:font-normal [&>li]:ml-4">
-            <h2>IV. Sposób pozyskiwania danych osobowych.</h2>
-            <li>
-              Administrator pozyskuje dane osobowe bezpośrednio od Użytkownika
-              za pośrednictwem Serwisu, poprzez dostępne w nim funkcjonalności i
-              narzędzia do komunikacji oraz przesłanie za ich pośrednictwem
-              wiadomości do Administratora. Podanie danych osobowych przez
-              Użytkownika jest dobrowolne.
-            </li>
-          </ul>
-          <ul className="flex items-start justify-start flex-col gap-4 list-decimal text-blue-950 [&>h2]:text-xl [&>h2]:font-medium [&>li]:text-lg [&>li]:font-normal [&>li]:ml-4">
-            <h2>V. Rodzaj przetwarzanych danych osobowych</h2>
-            <li>
-              Administrator może przetwarzać dane osobowe Użytkownika: adres
-              e-mail, imię i nazwisko, numer telefonu.
-            </li>
-          </ul>
-          <ul className="flex items-start justify-start flex-col gap-4 list-decimal text-blue-950 [&>h2]:text-xl [&>h2]:font-medium [&>li]:text-lg [&>li]:font-normal [&>li]:ml-4">
-            <h2>VI. Okres przetwarzania danych osobowych</h2>
-            <li>
-              Administrator przechowuje dane osobowe użytkowników przez okres
-              niezbędny do realizacji celów, dla których dane te zostały
-              zebrane, zgodnie z punktem 3 polityki prywatności.
-            </li>
-            <li>
-              W przypadku przetwarzania danych osobowych na podstawie zgody
-              użytkownika, dane te są przechowywane przez okres obowiązywania
-              zgody
-            </li>
-            <li>
-              Po upływie okresu przechowywania danych osobowych, Administrator
-              usuwa te dane lub uniemożliwia dostęp do nich.
-            </li>
-            <li>
-              W przypadku wycofania zgody na przetwarzanie danych osobowych,
-              Administrator usuwa te dane lub uniemożliwia dostęp do nich w
-              ciągu 30 dni od otrzymania żądania wycofania zgody, chyba że
-              przepisy prawa lub regulacje prawnie uzasadnione wymagają
-              przechowywania tych danych przez dłuższy okres.
-            </li>
-          </ul>
-          <ul className="flex items-start justify-start flex-col gap-4 list-decimal text-blue-950 [&>h2]:text-xl [&>h2]:font-medium [&>li]:text-lg [&>li]:font-normal [&>li]:ml-4">
-            <h2>VII. Udostępnianie danych osobowych</h2>
-            <li>
-              Dane osobowe Użytkownika nie są przekazywane przez Administratora
-              podmiotom trzecim.
-            </li>
-          </ul>
-          <ul className="flex items-start justify-start flex-col gap-4 list-decimal text-blue-950 [&>h2]:text-xl [&>h2]:font-medium [&>li]:text-lg [&>li]:font-normal [&>li]:ml-4">
-            <h2>VIII. Prawa użytkownika</h2>
-            <li>
-              Każdy użytkownik, którego dane osobowe są przetwarzane przez
-              Administratora, ma prawo do:
-              <ol className="list-disc ml-4 mt-2">
-                <li>
-                  dostępu do swoich danych osobowych i otrzymania ich kopii,
-                </li>
-                <li>sprostowania swoich danych osobowych,</li>
-                <li>usunięcia swoich danych osobowych,</li>
-                <li>ograniczenia przetwarzania swoich danych osobowych,</li>
-                <li>
-                  wniesienia sprzeciwu wobec przetwarzania swoich danych
-                  osobowych,
-                </li>
-                <li>przenoszenia swoich danych osobowych</li>
-              </ol>
-            </li>
-            <li>
-              W przypadku chęci skorzystania przez Użytkownika z przysługujących
-              mu praw jako podmiotu danych osobowych, może on się skontaktować z
-              Administratorem za pomocą następujących danych kontaktowych:
-              Łukasz Męderak, lukasz.mederak@gmail.com.
-            </li>
-            <li>
-              Użytkownik ma prawo do wniesienia skargi do organu nadzorczego, w
-              przypadku naruszenia przez Administratora przepisów o ochronie
-              danych osobowych.
-            </li>
-            <li>
-              Administrator zapewnia użytkownikom możliwość realizacji ich praw,
-              zgodnie z obowiązującymi przepisami prawa.
-            </li>
-          </ul>
-          <ul className="flex items-start justify-start flex-col gap-4 list-decimal text-blue-950 [&>h2]:text-xl [&>h2]:font-medium [&>li]:text-lg [&>li]:font-normal [&>li]:ml-4">
-            <h2>IX. Pliki cookies</h2>
-            <li>
-              Serwis korzysta z plików cookies w celu usprawnienia korzystania z
-              witryny oraz dostarczania spersonalizowanych treści i reklam.
-            </li>
-            <li>
-              Pliki cookies to niewielkie pliki tekstowe zapisywane na
-              urządzeniu użytkownika (np. komputerze, tablecie lub smartfonie)
-              podczas korzystania z witryny. Pliki cookie umożliwiają
-              identyfikację przeglądarki lub urządzenia użytkownika oraz
-              zapamiętanie preferencji i ustawień.
-            </li>
-            <li>
-              Serwis wykorzystuje pliki cookies sesyjne oraz trwałe. Pliki
-              cookies sesyjne wygasają po zamknięciu przeglądarki, natomiast
-              pliki cookies trwałe pozostają na urządzeniu użytkownika przez
-              określony czas lub do momentu ich ręcznego usunięcia.
-            </li>
-            <li>
-              Użytkownik może zablokować lub ograniczyć używanie plików cookies
-              za pomocą ustawień przeglądarki internetowej. Należy jednak
-              pamiętać, że zablokowanie lub ograniczenie plików cookies może
-              wpłynąć na funkcjonalność witryny i spowodować utrudnienia w
-              korzystaniu z niej.
-            </li>
-            <li>
-              Użytkownik może określić zakres dostępu plików cookies do swojego
-              urządzenia w ustawieniach przeglądarki.
-            </li>
-          </ul>
-          <ul className="flex items-start justify-start flex-col gap-4 list-decimal text-blue-950 [&>h2]:text-xl [&>h2]:font-medium [&>li]:text-lg [&>li]:font-normal [&>li]:ml-4">
-            <h2>X. Postanowienia końcowe</h2>
-            <li>
-              Administrator zastrzega sobie prawo do wprowadzania zmian w
-              Polityce Prywatności w dowolnym czasie. Zmiany te będą publikowane
-              na stronie internetowej, a ich obowiązywanie zacznie się od
-              momentu ich opublikowania.
-            </li>
-            <li>
-              Informacja o wprowadzonych zmianach pojawi się w formie komunikatu
-              dostępnego w Serwisie.
-            </li>
-            <li>
-              W sprawach nieuregulowanych w niniejszej Polityce prywatności
-              obowiązują przepisy RODO i przepisy prawa polskiego.
-            </li>
-          </ul>
+            </section>
+          ))}
         </div>
       </Container>
     </section>

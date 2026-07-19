@@ -15,13 +15,49 @@ import React, { ComponentProps, ReactNode } from "react";
 import { Link } from "react-scroll";
 import { useInView } from "react-intersection-observer";
 import { twMerge } from "tailwind-merge";
+import { useLanguage } from "@/context/Language.context";
 
 type HeroPropositionProps = {
   className?: ComponentProps<"section">["className"];
   children?: ReactNode;
 };
 
+const translations = {
+  pl: {
+    locationMobile: "Warszawa",
+    locationDesktop: "Warszawa, Jana Kazimierza",
+    online: "Online",
+    roleFirst: "Trener Personalny",
+    roleSecond: "i Dietetyk Kliniczny",
+    description:
+      "Pomagam poprawić sylwetkę, zdrowie\u00a0i\u00a0sprawność przez trening dopasowany do Twoich możliwości oraz rozsądne wsparcie żywieniowe.",
+    primaryCta: "Zobacz jak pracuję",
+    secondaryCta: "Umów konsultację",
+    techniqueTitle: "Bezpieczna technika",
+    techniqueDescription: "od pierwszego treningu",
+    planTitle: "Plan",
+    planDescription: "trening + żywienie",
+  },
+  en: {
+    locationMobile: "Warsaw",
+    locationDesktop: "Warsaw, Jana Kazimierza",
+    online: "Online",
+    roleFirst: "Personal Trainer",
+    roleSecond: "and Clinical Dietitian",
+    description:
+      "I help you improve your physique, health and fitness through training tailored to your abilities, supported by practical nutrition guidance.",
+    primaryCta: "See how I can help",
+    secondaryCta: "Book a consultation",
+    techniqueTitle: "Safe technique",
+    techniqueDescription: "from the first session",
+    planTitle: "Plan",
+    planDescription: "training + nutrition",
+  },
+};
+
 const HeroProposition = ({ className }: HeroPropositionProps) => {
+  const { language } = useLanguage();
+  const t = translations[language];
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.2,
@@ -74,11 +110,11 @@ const HeroProposition = ({ className }: HeroPropositionProps) => {
           >
             <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white shadow-sm backdrop-blur md:gap-2 md:px-4 md:py-2 md:text-sm">
               <MapPin className="h-3.5 w-3.5 text-primary-500 md:h-4 md:w-4" />
-              <span className="md:hidden">Warszawa</span>
-              <span className="hidden md:inline">Warszawa, Jana Kazimierza</span>
+              <span className="md:hidden">{t.locationMobile}</span>
+              <span className="hidden md:inline">{t.locationDesktop}</span>
             </span>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white shadow-sm backdrop-blur md:gap-2 md:px-4 md:py-2 md:text-sm">
-              Online
+              {t.online}
             </span>
           </motion.div>
 
@@ -86,17 +122,16 @@ const HeroProposition = ({ className }: HeroPropositionProps) => {
             <h1 className="max-w-2xl text-4xl font-bold leading-tight md:text-[3.25rem]">
               Łukasz Męderak
               <span className="hidden text-primary-500 sm:block">
-                Trener Personalny
-                <span className="block">i Dietetyk Kliniczny</span>
+                {t.roleFirst}
+                <span className="block">{t.roleSecond}</span>
               </span>
             </h1>
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary-500 sm:hidden">
-              <span className="block">Trener Personalny</span>
-              <span className="block">i Dietetyk Kliniczny</span>
+              <span className="block">{t.roleFirst}</span>
+              <span className="block">{t.roleSecond}</span>
             </p>
             <p className="max-w-xl text-lg font-medium leading-relaxed text-white/72 md:text-xl">
-              Pomagam poprawić sylwetkę, zdrowie&nbsp;i&nbsp;sprawność przez trening
-              dopasowany do Twoich możliwości oraz rozsądne wsparcie żywieniowe.
+              {t.description}
             </p>
           </motion.div>
 
@@ -105,7 +140,7 @@ const HeroProposition = ({ className }: HeroPropositionProps) => {
             className="flex w-full max-w-sm flex-col items-center gap-3 md:max-w-md min-[1025px]:w-auto min-[1025px]:max-w-none min-[1025px]:flex-row"
           >
             <Link
-              to="cooperation"
+              to="services"
               smooth
               spy
               offset={-50}
@@ -116,7 +151,7 @@ const HeroProposition = ({ className }: HeroPropositionProps) => {
               )}
             >
               <span className="absolute top-0 left-[-200%] h-full w-[300%] rotate-12 animate-slide bg-gradient-to-r from-transparent via-white to-transparent opacity-60" />
-              <span className="relative z-10">Zobacz jak pracuję</span>
+              <span className="relative z-10">{t.primaryCta}</span>
               <ArrowRight className="relative z-10 h-5 w-5 transition group-hover:translate-x-1" />
             </Link>
             <Link
@@ -126,7 +161,7 @@ const HeroProposition = ({ className }: HeroPropositionProps) => {
               offset={-80}
               className="flex w-full cursor-pointer items-center justify-center rounded-xl border border-white/20 bg-white/10 px-6 py-3 text-base font-semibold text-white shadow-sm backdrop-blur transition hover:bg-white/20 min-[1025px]:w-auto"
             >
-              Umów konsultację
+              {t.secondaryCta}
             </Link>
           </motion.div>
 
@@ -142,15 +177,15 @@ const HeroProposition = ({ className }: HeroPropositionProps) => {
           <div className="absolute bottom-10 h-[34rem] w-[26rem] rounded-full border border-white/8" />
           <div className="absolute bottom-0 h-24 w-[70%] rounded-full bg-black/45 blur-2xl" />
           <div className="absolute right-4 top-20 z-20 rounded-2xl border border-white/15 bg-white/10 px-5 py-4 text-white shadow-xl backdrop-blur">
-            <p className="text-sm font-semibold">Bezpieczna technika</p>
+            <p className="text-sm font-semibold">{t.techniqueTitle}</p>
             <p className="text-xs font-medium text-white/60">
-              od pierwszego treningu
+              {t.techniqueDescription}
             </p>
           </div>
           <div className="absolute bottom-14 left-12 z-20 rounded-2xl border border-white/15 bg-white/10 px-5 py-4 text-white shadow-xl backdrop-blur">
-            <p className="text-2xl font-bold">Plan</p>
+            <p className="text-2xl font-bold">{t.planTitle}</p>
             <p className="text-xs font-semibold uppercase tracking-wide text-white/60">
-              trening + żywienie
+              {t.planDescription}
             </p>
           </div>
           <motion.div

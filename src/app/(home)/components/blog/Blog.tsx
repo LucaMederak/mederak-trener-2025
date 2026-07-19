@@ -10,19 +10,42 @@ import Image from "next/image";
 import Button, { sizeStyles, variantStyles } from "@/components/button/Button";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
+import { useLanguage } from "@/context/Language.context";
+
+const translations = {
+  pl: {
+    title: "Zapoznaj się z wpisami na blogu",
+    description:
+      "Artykuły dotyczące m.in planowania żywienia, suplementacji oraz różnych tematów związanych z treningiem",
+    badge: "Blog",
+    more: "Więcej",
+    alt: "Artykuł",
+  },
+  en: {
+    title: "Read the Blog",
+    description:
+      "Articles about nutrition planning, supplementation and various training-related topics.",
+    badge: "Blog",
+    more: "Read more",
+    alt: "Article",
+  },
+};
 
 const Blog = ({ articles }: { articles: EntryArticleCollection[] }) => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <>
       <section id="blog" className="w-full py-8 md:py-12">
         <Container>
           <PageHeading
-            title="Zapoznaj się z wpisami na blogu"
-            description="Artykuły dotyczące m.in planowania żywienia, suplementacji oraz różnych tematów związanych z treningiem"
+            title={t.title}
+            description={t.description}
             headerType="h2"
             position="center"
             badgeType="default"
-            badgeText="Blog"
+            badgeText={t.badge}
           />
           <CardList className={`relative xl:grid-cols-auto-fill-image`}>
             {articles.map((article) => (
@@ -38,7 +61,7 @@ const Blog = ({ articles }: { articles: EntryArticleCollection[] }) => {
                   <Image
                     key={article.sys.id}
                     src={`https:` + article.fields.image?.fields.file?.url}
-                    alt={`Artykuł ${article.fields.title}`}
+                    alt={`${t.alt} ${article.fields.title}`}
                     width={500}
                     height={500}
                     className="aspect-video object-cover rounded-xl"
@@ -54,7 +77,7 @@ const Blog = ({ articles }: { articles: EntryArticleCollection[] }) => {
                   href={`/blog/${article.fields.slug}`}
                   className=" bg-white border border-primary-200 px-4 py-2 rounded-lg text-primary-900 font-semibold text-sm flex items-center gap-3 hover:bg-primary-50"
                 >
-                  Więcej
+                  {t.more}
                 </Link>
               </motion.div>
             ))}

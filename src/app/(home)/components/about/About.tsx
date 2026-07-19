@@ -4,50 +4,102 @@ import Container from "@/components/container/Container";
 import PageHeading from "@/components/pageHeading/PageHeading";
 import { fadeItem } from "@/animations/fade";
 import { Award, Dumbbell, GraduationCap, MountainSnow } from "lucide-react";
+import { useLanguage } from "@/context/Language.context";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
 //assets
 import AboutImg from "@/assets/hero/lukasz-2026-bez-tla.png";
 
-const credentials = [
-  "Trener personalny",
-  "Dietetyk kliniczny",
-  "Trener medyczny",
-  "Instruktor sportu: narciarstwo",
-];
+const icons = [<Dumbbell key="training" />, <GraduationCap key="nutrition" />, <Award key="process" />];
 
-const highlights = [
-  {
-    icon: <Dumbbell />,
-    title: "Trening od podstaw",
+const translations = {
+  pl: {
+    badge: "O mnie",
+    heading: "Kilka słów o mnie",
+    title: (
+      <>
+        Pomagam trenować mądrzej, bezpieczniej{" "}
+        <span className="whitespace-nowrap">i z większą</span> pewnością.
+      </>
+    ),
     description:
-      "Uczę techniki, kontroli ruchu i świadomego progresu, bez przypadkowego dokładania ciężaru.",
+      "Nazywam się Łukasz Męderak. Jestem trenerem personalnym i dietetykiem klinicznym. Ukończyłem studia z dietetyki klinicznej na Śląskim Uniwersytecie Medycznym w Katowicach. Łączę wiedzę z wielu dziedzin: treningu, dietetyki, zdrowia, motoryki i pracy z człowiekiem, dzięki czemu patrzę na cały proces szerzej niż tylko przez pryzmat ćwiczeń lub jadłospisu.",
+    credentials: [
+      "Trener personalny",
+      "Dietetyk kliniczny",
+      "Trener medyczny",
+      "Instruktor sportu: narciarstwo",
+    ],
+    sportInstructor: "instruktor sportu",
+    highlights: [
+      {
+        title: "Trening od podstaw",
+        description:
+          "Uczę techniki, kontroli ruchu i świadomego progresu, bez przypadkowego dokładania ciężaru.",
+      },
+      {
+        title: "Dietetyka kliniczna",
+        description:
+          "Łączę trening z rozsądnym wsparciem żywieniowym i edukacją, którą da się utrzymać na co dzień.",
+      },
+      {
+        title: "Szerszy proces",
+        description:
+          "Patrzę na cel przez zdrowie, regenerację, nawyki i możliwości konkretnej osoby.",
+      },
+    ],
   },
-  {
-    icon: <GraduationCap />,
-    title: "Dietetyka kliniczna",
+  en: {
+    badge: "About",
+    heading: "A Few Words About Me",
+    title: (
+      <>
+        I help you train smarter, safer and with more confidence.
+      </>
+    ),
     description:
-      "Łączę trening z rozsądnym wsparciem żywieniowym i edukacją, którą da się utrzymać na co dzień.",
+      "My name is Łukasz Męderak. I am a personal trainer and clinical dietitian. I graduated in clinical dietetics from the Medical University of Silesia in Katowice. I combine knowledge from multiple areas: training, nutrition, health, movement and working with people, which allows me to look at the whole process more broadly than just through exercises or a meal plan.",
+    credentials: [
+      "Personal trainer",
+      "Clinical dietitian",
+      "Medical trainer",
+      "Sports instructor: skiing",
+    ],
+    sportInstructor: "sports instructor",
+    highlights: [
+      {
+        title: "Training from the basics",
+        description:
+          "I teach technique, movement control and conscious progression without random load increases.",
+      },
+      {
+        title: "Clinical dietetics",
+        description:
+          "I connect training with practical nutrition support and education you can maintain day to day.",
+      },
+      {
+        title: "A broader process",
+        description:
+          "I look at your goal through health, recovery, habits and your individual capabilities.",
+      },
+    ],
   },
-  {
-    icon: <Award />,
-    title: "Praktyka i proces",
-    description:
-      "Stawiam na realny plan, regularną kontrolę i spokojne budowanie formy bez chaosu.",
-  },
-];
+};
 
 const About = () => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <section id="about" className="w-full bg-white py-10 md:py-16">
       <Container>
         <PageHeading
-          title="Kilka słów o mnie"
+          title={t.heading}
           headerType="h2"
           position="center"
           badgeType="default"
-          badgeText="O mnie"
+          badgeText={t.badge}
           className="mb-10"
         />
 
@@ -56,25 +108,20 @@ const About = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(22rem,0.72fr)]"
+          className="grid items-center gap-4 md:gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(22rem,0.72fr)]"
         >
           <div className="flex flex-col gap-7">
             <div className="flex flex-col gap-4">
               <h2 className="max-w-2xl text-3xl font-bold leading-tight text-primary-950 md:text-4xl">
-                Pomagam trenować mądrzej, bezpieczniej i z większą pewnością.
+                {t.title}
               </h2>
               <p className="max-w-3xl text-base font-medium leading-relaxed text-primary-900/75 md:text-lg">
-                Nazywam się Łukasz Męderak. Jestem trenerem personalnym i
-                dietetykiem klinicznym. Ukończyłem studia z dietetyki klinicznej
-                na Śląskim Uniwersytecie Medycznym w Katowicach. W pracy łączę
-                technikę treningu, edukację żywieniową i spokojne prowadzenie
-                procesu, żeby forma nie była chwilowym zrywem, tylko czymś, co
-                da się realnie utrzymać.
+                {t.description}
               </p>
             </div>
 
             <div className="flex flex-wrap gap-2">
-              {credentials.map((item) => (
+              {t.credentials.map((item) => (
                 <span
                   key={item}
                   className="rounded-full border border-[#D5B89A]/55 bg-[#EFE2D3] px-3 py-1 text-xs font-semibold text-[#3B2B1E]"
@@ -85,13 +132,13 @@ const About = () => {
             </div>
 
             <div className="grid gap-3 md:grid-cols-3">
-              {highlights.map((item) => (
+              {t.highlights.map((item, index) => (
                 <div
                   key={item.title}
                   className="rounded-2xl border border-primary-100 bg-primary-50/55 p-4"
                 >
                   <span className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-white text-primary-800 [&>svg]:h-5 [&>svg]:w-5">
-                    {item.icon}
+                    {icons[index]}
                   </span>
                   <h3 className="text-base font-bold text-primary-950">
                     {item.title}
@@ -104,12 +151,12 @@ const About = () => {
             </div>
           </div>
 
-          <div className="relative mx-auto flex w-full max-w-sm items-end justify-center overflow-hidden rounded-[2.25rem] pt-8 md:max-w-md lg:max-w-none">
+          <div className="relative mx-auto flex w-full max-w-sm items-end justify-center overflow-hidden rounded-[2.25rem] pt-2 md:max-w-md md:pt-8 lg:max-w-none">
             <div className="absolute bottom-0 h-[78%] w-[86%] rounded-[2.25rem] bg-[#EFE2D3]" />
             <div className="absolute bottom-8 h-[64%] w-[72%] rounded-full bg-[#D5B89A]/45 blur-2xl" />
             <div className="absolute right-4 top-6 z-20 hidden items-center gap-2 rounded-full border border-white/70 bg-white/80 px-3 py-1.5 text-xs font-bold text-primary-950 backdrop-blur sm:flex">
               <MountainSnow className="h-4 w-4 text-primary-700" />
-              instruktor sportu
+              {t.sportInstructor}
             </div>
             <Image
               alt="Zdjęcie: Łukasz Męderak"

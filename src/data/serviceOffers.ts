@@ -12,6 +12,8 @@ export type ServiceOffer = {
   details: string[];
 };
 
+export type ServiceOfferCopy = Omit<ServiceOffer, "slug">;
+
 export const serviceOffers: ServiceOffer[] = [
   {
     slug: "treningi-personalne",
@@ -154,3 +156,139 @@ export const serviceOffers: ServiceOffer[] = [
 
 export const getServiceOffer = (slug: string) =>
   serviceOffers.find((offer) => offer.slug === slug);
+
+export const serviceOfferTranslations: Record<string, ServiceOfferCopy> = {
+  "treningi-personalne": {
+    title: "Training Coaching and In-Person Personal Training",
+    shortTitle: "Personal Training",
+    eyebrow: "Warsaw Active Zone Wola, Jana Kazimierza 43",
+    description:
+      "Individual training sessions in Warsaw, technique coaching and support tailored to your goal.",
+    pageDescription:
+      "In-person cooperation for people who want to train safely, consciously and with a clear plan. We work on technique, exercise selection, progression and habits that can realistically be maintained.",
+    forWho: [
+      "for beginners who want to enter strength training properly",
+      "for people returning after a break or injury",
+      "for those who want to improve physique, strength and fitness",
+      "for anyone who needs live technique supervision",
+    ],
+    process: [
+      "we start with a consultation and define your goal",
+      "we assess your current movement quality, technique and limitations",
+      "I prepare the training plan and guide you through the next stages",
+      "we adjust exercises, loads and strategy on an ongoing basis",
+    ],
+    benefits: [
+      "safer exercise technique",
+      "a plan matched to your capabilities",
+      "more confidence in the gym",
+      "clear progress tracking",
+    ],
+    details: [
+      "personal training in Warsaw",
+      "technique analysis and exercise coaching",
+      "goal-based training plan",
+      "ongoing progress control",
+    ],
+  },
+  "prowadzenie-online": {
+    title: "Online Coaching",
+    shortTitle: "Online Coaching",
+    eyebrow: "Remote cooperation",
+    description:
+      "Training plan, nutrition support and regular progress tracking wherever you train.",
+    pageDescription:
+      "Online coaching is a good fit if you want to train independently, but still need a clear plan, corrections and someone who keeps the whole process moving in the right direction.",
+    forWho: [
+      "for people training independently at the gym or at home",
+      "for people living outside Warsaw",
+      "for those who need a plan and regular accountability",
+      "for people who want to combine training with practical nutrition",
+    ],
+    process: [
+      "I collect information about your goal, equipment, time and experience",
+      "I prepare your training plan and main nutrition guidelines",
+      "I analyze reports, measurements and technique videos",
+      "I update the plan according to your progress and wellbeing",
+    ],
+    benefits: [
+      "a clear action plan",
+      "flexibility of place and time",
+      "regular progress tracking",
+      "less chaos in training and nutrition",
+    ],
+    details: [
+      "individual training plan",
+      "nutrition support",
+      "progress monitoring",
+      "contact and adjustments during cooperation",
+    ],
+  },
+  konsultacje: {
+    title: "Training and Nutrition Consultations",
+    titleLines: ["Training and Nutrition", "Consultations"],
+    shortTitle: "Consultations",
+    eyebrow: "One-off support",
+    description:
+      "One-off consultations for people who want to organize their training, nutrition or direction.",
+    pageDescription:
+      "A consultation is a good starting point if you are not sure how to train, what to improve in your plan or how to combine training with nutrition in a reasonable way.",
+    forWho: [
+      "for people who want to review their current plan",
+      "for those who feel stuck with progress or motivation",
+      "for people who need a second opinion on training or nutrition",
+      "for anyone who wants to start but does not know where to begin",
+    ],
+    process: [
+      "before the consultation I collect key information",
+      "we discuss your goal, current actions and biggest obstacles",
+      "I point out priorities and specific changes to implement",
+      "after the meeting you have a clear direction for further work",
+    ],
+    benefits: [
+      "quick organization of your plan",
+      "specific guidance without unnecessary theory",
+      "better training and nutrition decisions",
+      "a strong starting point before longer cooperation",
+    ],
+    details: [
+      "goal and current plan review",
+      "training recommendations",
+      "nutrition guidance",
+      "clear direction for further work",
+    ],
+  },
+  "wspolpraca-reklamowa": {
+    title: "Brand Collaborations",
+    shortTitle: "Brand Collaborations",
+    eyebrow: "Brands and projects",
+    description:
+      "Content, campaigns and brand partnerships in fitness, health, nutrition and technology.",
+    pageDescription:
+      "I work with brands that match my values: health, quality, education, technology and real usefulness for the audience.",
+    forWho: [
+      "for brands in fitness, health, nutrition and sport",
+      "for products or services that bring real value to the audience",
+      "for technology companies building solutions for active people",
+      "for projects where credibility and education matter",
+    ],
+    process: [
+      "we discuss the campaign goal and fit with my audience",
+      "we define the format, scope and communication style",
+      "we prepare materials in a natural, consistent style",
+      "we analyze results and further cooperation opportunities",
+    ],
+    benefits: [
+      "natural communication without an artificial tone",
+      "a combination of training, nutrition and business knowledge",
+      "message matched to an active audience",
+      "possibility of longer-term project cooperation",
+    ],
+    details: [
+      "campaigns and educational materials",
+      "product and service testing",
+      "cooperation on fitness/health projects",
+      "personal brand activities",
+    ],
+  },
+};
