@@ -5,9 +5,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 type OfferPageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export const generateStaticParams = () =>
@@ -15,8 +15,9 @@ export const generateStaticParams = () =>
     slug: offer.slug,
   }));
 
-export const generateMetadata = ({ params }: OfferPageProps) => {
-  const offer = getServiceOffer(params.slug);
+export const generateMetadata = async ({ params }: OfferPageProps) => {
+  const { slug } = await params;
+  const offer = getServiceOffer(slug);
 
   if (!offer) {
     return {
@@ -30,8 +31,9 @@ export const generateMetadata = ({ params }: OfferPageProps) => {
   };
 };
 
-const OfferPage = ({ params }: OfferPageProps) => {
-  const offer = getServiceOffer(params.slug);
+const OfferPage = async ({ params }: OfferPageProps) => {
+  const { slug } = await params;
+  const offer = getServiceOffer(slug);
 
   if (!offer) {
     notFound();
