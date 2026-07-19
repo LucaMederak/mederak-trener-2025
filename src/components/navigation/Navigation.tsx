@@ -110,6 +110,9 @@ const Navigation = ({
     if (navOpen) setNavOpen(false);
   };
 
+  const isHeroNav = pathname === "/" && !isScrolled;
+  const isLightNav = !isHeroNav;
+
   return (
     <nav
       className={twMerge(
@@ -120,7 +123,7 @@ const Navigation = ({
       <div
         className={twMerge(
           "flex items-center justify-between w-full max-w-5xl mx-auto rounded-full border px-5 py-2 transition-all duration-300 md:px-6 lg:px-7",
-          isScrolled
+          isLightNav
             ? "border-primary-100 bg-white/90 shadow-lg shadow-black/5 backdrop-blur-xl"
             : "border-white/10 bg-white/5 shadow-xl shadow-black/10 backdrop-blur-md"
         )}
@@ -131,14 +134,14 @@ const Navigation = ({
               width={150}
               height={150}
               alt="Logo"
-              src={isScrolled ? logoURL! : logoWhiteURL ?? logoURL!}
+              src={isLightNav ? logoURL! : logoWhiteURL ?? logoURL!}
               className="h-auto w-full object-contain"
             />
           ) : (
             <span
               className={twMerge(
                 "text-3xl font-bold transition-colors",
-                isScrolled ? "text-nav-link-default" : "text-white"
+                isLightNav ? "text-nav-link-default" : "text-white"
               )}
             >
               LOGO
@@ -150,7 +153,7 @@ const Navigation = ({
           <ul
             className={twMerge(
               "hidden lg:flex lg:items-center lg:gap-1 rounded-full border px-2 py-1.5 transition-colors",
-              isScrolled
+              isLightNav
                 ? "border-primary-100 bg-primary-50"
                 : "border-white/10 bg-black/10"
             )}
@@ -160,7 +163,7 @@ const Navigation = ({
                 key={index}
                 className={twMerge(
                   "rounded-full px-3 py-1.5 transition-colors",
-                  isScrolled ? "hover:bg-white" : "hover:bg-white/10"
+                  isLightNav ? "hover:bg-white" : "hover:bg-white/10"
                 )}
               >
                 {renderNavLink(
@@ -168,7 +171,7 @@ const Navigation = ({
                   link.href,
                   link.title,
                   changeNavOpen,
-                  isScrolled,
+                  isLightNav,
                   false,
                   link.isAnotherWebsite
                 )}
@@ -185,7 +188,7 @@ const Navigation = ({
           onClick={() => setNavOpen(!navOpen)}
           className={twMerge(
             "lg:hidden rounded-xl border p-2 transition-colors",
-            isScrolled
+            isLightNav
               ? "border-primary-100 bg-primary-50"
               : "border-white/10 bg-white/5"
           )}
@@ -193,7 +196,7 @@ const Navigation = ({
           <Menu
             className={twMerge(
               "w-6 h-6 transition-colors duration-300",
-              isScrolled ? "text-nav-link-default" : "text-white"
+              isLightNav ? "text-nav-link-default" : "text-white"
             )}
           />
         </button>
@@ -216,7 +219,7 @@ const Navigation = ({
             portalContainerClassName="flex justify-end"
             className={twMerge(
               "flex min-h-screen w-80 flex-col gap-4",
-              isScrolled ? "bg-white text-nav-link-default" : "bg-black text-white"
+              isLightNav ? "bg-white text-nav-link-default" : "bg-black text-white"
             )}
             onClose={() => setNavOpen(false)}
           >
@@ -226,7 +229,7 @@ const Navigation = ({
                   width={150}
                   height={150}
                   alt="Logo"
-                  src={(isScrolled ? logoURL : logoWhiteURL ?? logoURL) as string}
+                  src={(isLightNav ? logoURL : logoWhiteURL ?? logoURL) as string}
                   className="h-auto w-full object-contain"
                 />
               </NextLink>
@@ -235,7 +238,7 @@ const Navigation = ({
                 <Menu
                   className={twMerge(
                     "h-7 w-7",
-                    isScrolled ? "text-nav-link-default" : "text-white"
+                    isLightNav ? "text-nav-link-default" : "text-white"
                   )}
                 />
               </button>
@@ -252,7 +255,7 @@ const Navigation = ({
                         link.title,
                         changeNavOpen,
                         true,
-                        !isScrolled,
+                        !isLightNav,
                         link.isAnotherWebsite
                       )}
                     </li>

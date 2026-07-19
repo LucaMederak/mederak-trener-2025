@@ -107,7 +107,7 @@ const PageHeading = ({
         )}
       >
         {badgeType === "default" && (
-          <span className="bg-slate-50 text-slate-600 border border-dashed border-slate-200 text-sm font-semibold me-2 px-3 py-1 rounded-xl ">
+          <span className="rounded-full border border-[#D5B89A]/55 bg-[#EFE2D3] px-2.5 py-0.5 text-xs font-semibold text-[#3B2B1E]">
             {badgeText}
           </span>
         )}

@@ -9,9 +9,9 @@ import {
   EntryArticleSkeleton,
 } from "@/types/article.types";
 import Blog from "./components/blog/Blog";
-import Cooperation from "./components/cooperation/Cooperation";
 import Contact from "./components/contact/Contact";
 import FounderProjects from "./components/founderProjects/FounderProjects";
+import ServiceOffers from "./components/serviceOffers/ServiceOffers";
 import Opinions from "./opinions/Opinions";
 
 const getArticles = async () => {
@@ -38,7 +38,7 @@ export default async function Home() {
   return (
     <main className="w-full">
       <Hero />
-      <Cooperation />
+      <ServiceOffers />
       <Opinions />
       <About />
       <FounderProjects />
