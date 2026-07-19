@@ -33,13 +33,18 @@ export const renderNavLink = (
   linkTitle: string,
   onClick: () => void,
   isScrolled: boolean,
+  isInDarkMenu = false,
   isAnotherWebsite?: boolean
 ) => {
+  const colorClass = isInDarkMenu
+    ? "text-white/85 hover:text-white"
+    : isScrolled
+      ? "text-nav-link-default hover:text-nav-link-hover"
+      : "text-white/85 hover:text-white";
+
   const linkClass = twMerge(
     "font-semibold text-lg lg:text-[0.82rem] transition-colors duration-300 cursor-pointer",
-    isScrolled
-      ? "text-nav-link-default hover:text-nav-link-hover"
-      : "text-white/85 hover:text-white"
+    colorClass
   );
 
   if (isAnotherWebsite) {
@@ -114,20 +119,20 @@ const Navigation = ({
     >
       <div
         className={twMerge(
-          "flex items-center justify-between w-full max-w-5xl mx-auto rounded-full border px-3 py-2 transition-all duration-300",
+          "flex items-center justify-between w-full max-w-5xl mx-auto rounded-full border px-5 py-2 transition-all duration-300 md:px-6 lg:px-7",
           isScrolled
             ? "border-primary-100 bg-white/90 shadow-lg shadow-black/5 backdrop-blur-xl"
             : "border-white/10 bg-white/5 shadow-xl shadow-black/10 backdrop-blur-md"
         )}
       >
-        <NextLink href={logoLink} className="w-20 lg:w-24">
+        <NextLink href={logoLink} className="flex w-10 items-center lg:w-12">
           {logoURL ? (
             <Image
               width={150}
               height={150}
               alt="Logo"
               src={isScrolled ? logoURL! : logoWhiteURL ?? logoURL!}
-              className="w-full h-auto object-contain"
+              className="h-auto w-full object-contain"
             />
           ) : (
             <span
@@ -164,6 +169,7 @@ const Navigation = ({
                   link.title,
                   changeNavOpen,
                   isScrolled,
+                  false,
                   link.isAnotherWebsite
                 )}
               </li>
@@ -208,22 +214,30 @@ const Navigation = ({
         {navOpen && (
           <Portal
             portalContainerClassName="flex justify-end"
-            className="bg-white flex flex-col gap-4 w-80 min-h-screen"
+            className={twMerge(
+              "flex min-h-screen w-80 flex-col gap-4",
+              isScrolled ? "bg-white text-nav-link-default" : "bg-black text-white"
+            )}
             onClose={() => setNavOpen(false)}
           >
             <div className="flex items-center justify-between w-full p-6">
-              <NextLink href={logoLink}>
+              <NextLink href={logoLink} className="flex w-12 items-center">
                 <Image
                   width={150}
                   height={150}
                   alt="Logo"
-                  src={logoURL as string}
-                  className="object-contain"
+                  src={(isScrolled ? logoURL : logoWhiteURL ?? logoURL) as string}
+                  className="h-auto w-full object-contain"
                 />
               </NextLink>
 
               <button onClick={() => setNavOpen(false)}>
-                <Menu className="text-nav-link-default w-7 h-7" />
+                <Menu
+                  className={twMerge(
+                    "h-7 w-7",
+                    isScrolled ? "text-nav-link-default" : "text-white"
+                  )}
+                />
               </button>
             </div>
 
@@ -237,7 +251,9 @@ const Navigation = ({
                         link.href,
                         link.title,
                         changeNavOpen,
-                        true
+                        true,
+                        !isScrolled,
+                        link.isAnotherWebsite
                       )}
                     </li>
                   ))}

@@ -8,8 +8,8 @@ import { sizeStyles, variantStyles } from "@/components/button/Button";
 import { usePathname } from "next/navigation";
 
 //assets
-import Logo from "@/assets/mederak-logo-black.svg";
-import LogoWhite from "@/assets/mederak-logo-white.svg";
+import Logo from "@/assets/mederak-logo-icon-2026.svg";
+import LogoWhite from "@/assets/mederak-logo-icon-2026-white.svg";
 // import Logo from "@/assets/hero/łm.svg";
 import { twMerge } from "tailwind-merge";
 
