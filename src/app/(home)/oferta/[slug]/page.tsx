@@ -26,6 +26,14 @@ export const generateMetadata = async ({ params }: OfferPageProps) => {
   return {
     title: `${offer.shortTitle} | Łukasz Męderak`,
     description: offer.description,
+    alternates: {
+      canonical: `/oferta/${offer.slug}`,
+    },
+    openGraph: {
+      title: `${offer.shortTitle} | Łukasz Męderak`,
+      description: offer.description,
+      url: `/oferta/${offer.slug}`,
+    },
   };
 };
 

@@ -1,15 +1,15 @@
 import AlertDisplay from "@/components/alert/AlertDisplay";
 import { AlertProvider } from "@/context/Alert.context";
 import type { Metadata } from "next";
-import { DM_Sans, Figtree, Raleway } from "next/font/google";
+import { Figtree } from "next/font/google";
 import { twMerge } from "tailwind-merge";
 import "./globals.css";
-import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
-import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const figtree = Figtree({ subsets: ["latin", "latin-ext"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://trener.mederak.com"),
   title: "Trener personalny Warszawa Wola | Łukasz Męderak",
   description:
     "Trener personalny Warszawa Wola – Łukasz Męderak. Treningi personalne na siłowni przy ul. Jana Kazimierza. Popraw zdrowie, sylwetkę i wyniki sportowe z doświadczonym trenerem.",
@@ -38,9 +38,6 @@ export const metadata: Metadata = {
     locale: "pl_PL",
     type: "website",
   },
-  alternates: {
-    canonical: "https://trener.mederak.com",
-  },
 };
 
 export default function RootLayout({
@@ -48,7 +45,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const isProduction = process.env.NODE_ENV === "production";
   return (
     <html lang="pl" data-theme="beige">
       {/* rose, lime, yellow, blue, indigo */}

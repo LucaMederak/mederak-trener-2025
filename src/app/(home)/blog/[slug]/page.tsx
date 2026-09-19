@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import { contentfulDeliveryClient } from "@/utils/contentful";
 import { EntryArticleSkeleton } from "@/types/article.types";
+import type { Metadata } from "next";
 
 //contentful
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
@@ -36,6 +37,32 @@ const getArticle = async (slug: string) => {
     article: {
       sys: articleEntry.sys,
       fields: articleEntry.fields,
+    },
+  };
+};
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> => {
+  const { slug } = await params;
+  const { article } = await getArticle(slug);
+  const imageUrl = article.fields.image?.fields.file?.url
+    ? `https:${article.fields.image.fields.file.url}`
+    : undefined;
+
+  return {
+    title: `${article.fields.title} | Łukasz Męderak`,
+    description: article.fields.shortDescription,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
+    openGraph: {
+      title: `${article.fields.title} | Łukasz Męderak`,
+      description: article.fields.shortDescription,
+      url: `/blog/${slug}`,
+      images: imageUrl ? [{ url: imageUrl }] : undefined,
     },
   };
 };

@@ -1,4 +1,5 @@
 //components
+import type { Metadata } from "next";
 import Hero from "./components/hero/HeroProposition";
 import About from "./components/about/About";
 import MoreInfo from "./components/moreInfo/MoreInfo";
@@ -13,6 +14,15 @@ import Contact from "./components/contact/Contact";
 import FounderProjects from "./components/founderProjects/FounderProjects";
 import ServiceOffers from "./components/serviceOffers/ServiceOffers";
 import Opinions from "./opinions/Opinions";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    url: "/",
+  },
+};
 
 const getArticles = async () => {
   const articlesEntries =
